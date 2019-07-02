@@ -1,0 +1,4 @@
+*.cs diff=csharp
+*.dll binary
+*.pdb binary
+*.sh		text eol=lf
