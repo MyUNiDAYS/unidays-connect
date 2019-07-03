@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div>
+        <h2>MyUNiDAYS OAuth connect client example</h2>
+        
+        <h4>
+            Please edit the webconfig and replace with the provided credentials
+        </h4>
+        
+        <div class="">
+            @if (String.IsNullOrEmpty(@ViewBag.Username))
+            {
+                @Html.ActionLink("Log in", "Index", "Login", new object { }, new {@class = "btn"})
+            }
+            else
+            {
+                <p>This is your current user : @ViewBag.Username</p>
+                @Html.ActionLink("Log out", "Index", "Logout", new object { }, new {@class = "btn" })
+            }
+        </div>
+        
+    </div>
+</div>
