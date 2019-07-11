@@ -50,6 +50,7 @@ namespace Manual
 					{ "code", code },
 					{ "client_id", _clientId },
 					{ "client_secret", _clientSecret },
+					{ "scope", "user:name" },
 					{ "redirect_uri", _returnUrl }
 				});
 				var response = await tokenClient.PostAsync($"{_openIdServer}/oauth/access_token", content);
@@ -62,6 +63,9 @@ namespace Manual
 
 			// Pass `access_token` to https://account.unidays.ab.dev/oauth/userinfo to retrieve user details
 			string userId = null;
+			string userFirstName = null;
+			string userLastName = null;
+
 			using (var userInfoClient = new HttpClient())
 			{
 				var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, $"{_openIdServer}/oauth/userinfo");
@@ -72,10 +76,12 @@ namespace Manual
 				var responseString = await response.Content.ReadAsStringAsync();
 				dynamic userInfoJson = JsonConvert.DeserializeObject(responseString);
 				userId = userInfoJson.sub;
+				userFirstName = userInfoJson.first_name;
+				userLastName = userInfoJson.last_name;
 			}
 
 			// Log user in using crude authentication cookie belonging to this application
-			var stateCookie = new HttpCookie("auth", userId);
+			var stateCookie = new HttpCookie("auth", userId + ", " + userFirstName + " " + userLastName);
 			stateCookie.HttpOnly = true;
 			context.Response.Cookies.Set(stateCookie);
 

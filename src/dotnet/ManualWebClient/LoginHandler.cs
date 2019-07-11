@@ -27,10 +27,11 @@ namespace Manual
 			// Redirect to the Authorization service
 			context.Response.StatusCode = 302;
 			context.Response.Headers.Add("Location"
-			    , $"{_openIdServer}/oauth/authorize?" +
-			      $"client_id={_clientId}" +
-			      $"&response_type=code&" +
-			      $"state={state}" + 
+			    , $"{_openIdServer}/oauth/authorize" +
+			      $"?client_id={_clientId}" +
+			      $"&response_type=code" +
+			      $"&state={state}" + 
+				  "&scope=user%3aname" + 
 			      "&redirect_uri=" + HttpUtility.UrlEncode(_returnUrl));
 		}
 	}
