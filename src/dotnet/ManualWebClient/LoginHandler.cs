@@ -31,7 +31,7 @@ namespace Manual
 			      $"?client_id={_clientId}" +
 			      $"&response_type=code" +
 			      $"&state={state}" + 
-				  "&scope=user%3aname" + 
+				  "&scope=email name" + 
 			      "&redirect_uri=" + HttpUtility.UrlEncode(_returnUrl));
 		}
 	}
