@@ -53,6 +53,8 @@ namespace CoreWebMicrosoftMiddleware
 					options.UserInformationEndpoint = $"{Configuration["UNiDAYS:OpenIdServer"]}/oauth/userinfo";
 
 				    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
+                    options.Scope.Add("email");
+                    options.Scope.Add("name");
 
                     options.Events = new OAuthEvents
 					{
@@ -65,7 +67,7 @@ namespace CoreWebMicrosoftMiddleware
 							var response = await context.Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, context.HttpContext.RequestAborted);
 							response.EnsureSuccessStatusCode();
 
-							var user = JObject.Parse(await response.Content.ReadAsStringAsync());
+							var user = JObject.Parse(await response.Content.ReadAsStringAsync()); //Do something with the scope information here
 
 							context.RunClaimActions(user);
 						}

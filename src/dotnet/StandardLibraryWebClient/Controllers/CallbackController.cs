@@ -58,6 +58,11 @@ namespace StandardLibrary.Controllers
             var userInfoResponse = await userInfoEP.GetAsync();
             var userSub = userInfoResponse.JsonObject["sub"].ToString();
 
+            //Parse response to get requested scopes
+            var userGivenName = userInfoResponse.JsonObject["given_name"].ToString();
+            var userFamilyName = userInfoResponse.JsonObject["family_name"].ToString();
+            var userEmail = userInfoResponse.JsonObject["email"].ToString();
+
             // Log user in using crude authentication cookie belonging to this application
             var authCookie = new HttpCookie("auth", userSub);
             authCookie.HttpOnly = true;
