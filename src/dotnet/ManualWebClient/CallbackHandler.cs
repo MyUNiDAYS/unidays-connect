@@ -65,6 +65,7 @@ namespace Manual
 			string userId = null;
 			string userFirstName = null;
 			string userLastName = null;
+		    string email = null;
 
 			using (var userInfoClient = new HttpClient())
 			{
@@ -76,12 +77,13 @@ namespace Manual
 				var responseString = await response.Content.ReadAsStringAsync();
 				dynamic userInfoJson = JsonConvert.DeserializeObject(responseString);
 				userId = userInfoJson.sub;
-				userFirstName = userInfoJson.first_name;
-				userLastName = userInfoJson.last_name;
+				userFirstName = userInfoJson.given_name;
+				userLastName = userInfoJson.family_name;
+			    email = userInfoJson.email;
 			}
 
 			// Log user in using crude authentication cookie belonging to this application
-			var stateCookie = new HttpCookie("auth", userId + ", " + userFirstName + " " + userLastName);
+			var stateCookie = new HttpCookie("auth", userId + ", " + userFirstName + " " + userLastName + " " + email);
 			stateCookie.HttpOnly = true;
 			context.Response.Cookies.Set(stateCookie);
 
