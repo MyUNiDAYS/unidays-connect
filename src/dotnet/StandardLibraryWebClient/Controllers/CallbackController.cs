@@ -41,7 +41,7 @@ namespace StandardLibrary.Controllers
             var tokenResponse = await client.RequestAuthorizationCodeAsync(
                 code: code,
                 redirectUri: _returnUrl,
-                additionalValues:new Dictionary<string, string>()
+                additionalValues: new Dictionary<string, string>()
                 {
                     {"client_id",_clientId },
                     {"client_secret", _clientSecret }

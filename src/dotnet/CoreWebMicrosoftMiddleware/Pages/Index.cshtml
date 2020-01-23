@@ -1,18 +1,18 @@
 ﻿@page
 @model IndexModel
 @{
-	ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home page";
 }
 
 <h2>MyUNiDAYS OAuth connect client example</h2>
-        
+
 <h4>
     Please edit the app settings and replace with the provided credentials
 </h4>
 
 @if (!User.Identity.IsAuthenticated)
 {
-	<a asp-action="Login" asp-controller="Account">Log In with UNiDAYS</a>
+    <a asp-action="Login" asp-controller="Account">Log In with UNiDAYS</a>
 }
 else
 {

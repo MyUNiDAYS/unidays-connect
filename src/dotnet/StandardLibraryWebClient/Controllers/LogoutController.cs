@@ -15,7 +15,7 @@ namespace StandardLibrary.Controllers
             authCookie.Expires = DateTime.Today.AddDays(-1);
             HttpContext.Response.Cookies.Set(authCookie);
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

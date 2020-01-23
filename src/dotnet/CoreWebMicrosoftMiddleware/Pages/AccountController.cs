@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreWebMicrosoftMiddleware.Pages
 {
-	[Route("[controller]/[action]")]
-	public class AccountController : Controller
-	{
-		[HttpGet]
-		public IActionResult Login(string returnUrl = "/")
-		{
-			return Challenge(new AuthenticationProperties { RedirectUri = returnUrl });
-		}
-	}
+    [Route("[controller]/[action]")]
+    public class AccountController : Controller
+    {
+        [HttpGet]
+        public IActionResult Login(string returnUrl = "/")
+        {
+            return Challenge(new AuthenticationProperties { RedirectUri = returnUrl });
+        }
+    }
 }

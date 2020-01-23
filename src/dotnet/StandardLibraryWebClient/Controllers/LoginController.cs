@@ -30,7 +30,7 @@ namespace StandardLibrary.Controllers
             string url = client.CreateCodeFlowUrl(
                 clientId: _clientId,
                 redirectUri: _returnUrl,
-                state:state,
+                state: state,
                 scope: "name email verification",
                 nonce: Guid.NewGuid().ToString());
 
