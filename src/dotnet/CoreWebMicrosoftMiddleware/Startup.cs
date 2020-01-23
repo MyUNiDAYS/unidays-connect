@@ -55,6 +55,7 @@ namespace CoreWebMicrosoftMiddleware
 				    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
                     options.Scope.Add("email");
                     options.Scope.Add("name");
+				    options.Scope.Add("verification");
 
                     options.Events = new OAuthEvents
 					{

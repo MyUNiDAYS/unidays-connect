@@ -56,15 +56,17 @@ namespace StandardLibrary.Controllers
             var token = tokenResponse.AccessToken;
             var userInfoEP = new UserInfoClient(new Uri($"{_openIdServer}/oauth/userinfo"), token);
             var userInfoResponse = await userInfoEP.GetAsync();
-            var userSub = userInfoResponse.JsonObject["sub"].ToString();
+            var userId = userInfoResponse.JsonObject["sub"].ToString();
 
             //Parse response to get requested scopes
-            var userGivenName = userInfoResponse.JsonObject["given_name"].ToString();
-            var userFamilyName = userInfoResponse.JsonObject["family_name"].ToString();
-            var userEmail = userInfoResponse.JsonObject["email"].ToString();
+            var userFirstName = userInfoResponse.JsonObject["given_name"].ToString();
+            var userLastName = userInfoResponse.JsonObject["family_name"].ToString();
+            var email = userInfoResponse.JsonObject["email"].ToString();
+            var verified = userInfoResponse.JsonObject["verification_status"]["verified"].ToString();
+            var userType = userInfoResponse.JsonObject["verification_status"]["user_type"].ToString();
 
             // Log user in using crude authentication cookie belonging to this application
-            var authCookie = new HttpCookie("auth", userSub);
+            var authCookie = new HttpCookie("auth", userId + ", " + userFirstName + " " + userLastName + " " + email + " " + verified + " " + userType);
             authCookie.HttpOnly = true;
             HttpContext.Response.Cookies.Set(authCookie);
 

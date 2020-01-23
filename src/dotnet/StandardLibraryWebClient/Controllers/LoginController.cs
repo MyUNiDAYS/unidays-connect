@@ -31,7 +31,7 @@ namespace StandardLibrary.Controllers
                 clientId: _clientId,
                 redirectUri: _returnUrl,
                 state:state,
-                scope: "name email",
+                scope: "name email verification",
                 nonce: Guid.NewGuid().ToString());
 
             return Redirect(url);
