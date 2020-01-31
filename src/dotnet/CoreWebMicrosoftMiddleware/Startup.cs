@@ -33,7 +33,12 @@ namespace CoreWebMicrosoftMiddleware
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AutomaticAuthentication = false;
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddAuthentication(options =>
                 {
@@ -70,24 +75,26 @@ namespace CoreWebMicrosoftMiddleware
 
                             var user = JObject.Parse(await response.Content.ReadAsStringAsync()); //Do something with the scope information here
 
-                            context.RunClaimActions(user);
+                            //context.RunClaimActions(user);
                         }
                     };
                 });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage();
 
-            app.UseAuthentication();
-
             app.UseCookiePolicy();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(name: "default", template: "{controller}/{action=Index}/{id?}");
+            app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints => {
+                endpoints.MapRazorPages();
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

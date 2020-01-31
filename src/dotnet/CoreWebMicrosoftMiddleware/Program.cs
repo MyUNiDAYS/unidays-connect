@@ -5,7 +5,7 @@ namespace CoreWebMicrosoftMiddleware
 {
     public sealed class Program
     {
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) => WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) => WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().UseIIS();
 
         public static void Main(string[] args)
         {
