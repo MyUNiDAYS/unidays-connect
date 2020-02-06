@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 
 namespace CoreWebMicrosoftMiddleware
 {
@@ -73,9 +73,9 @@ namespace CoreWebMicrosoftMiddleware
                             var response = await context.Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, context.HttpContext.RequestAborted);
                             response.EnsureSuccessStatusCode();
 
-                            var user = JObject.Parse(await response.Content.ReadAsStringAsync()); //Do something with the scope information here
+                            var user = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
 
-                            //context.RunClaimActions(user);
+                            context.RunClaimActions(user.RootElement);
                         }
                     };
                 });
