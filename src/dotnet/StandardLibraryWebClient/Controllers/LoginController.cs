@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
@@ -31,7 +29,7 @@ namespace StandardLibrary.Controllers
                 clientId: _clientId,
                 redirectUri: _returnUrl,
                 state:state,
-                scope: "name email",
+                scope: "openid email name verification",
                 nonce: Guid.NewGuid().ToString());
 
             return Redirect(url);
