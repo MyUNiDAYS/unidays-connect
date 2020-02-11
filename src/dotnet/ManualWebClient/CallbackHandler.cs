@@ -40,7 +40,7 @@ namespace Manual
 				return;
 			}
 
-			// Pass `code`, `client_id`, `client_secret` to https://account.unidays.ab.dev/oauth/token to get an `access_token`
+			// Pass `code`, `client_id`, `client_secret` to `/oauth/access_token` to get an `access_token`
 			string accessToken;
 			using (var tokenClient = new HttpClient())
 			{
@@ -50,7 +50,6 @@ namespace Manual
 					{ "code", code },
 					{ "client_id", _clientId },
 					{ "client_secret", _clientSecret },
-					{ "scope", "user:name" },
 					{ "redirect_uri", _returnUrl }
 				});
 				var response = await tokenClient.PostAsync($"{_openIdServer}/oauth/access_token", content);
@@ -61,7 +60,7 @@ namespace Manual
 				accessToken = tokenJson.access_token;
 			}
 
-			// Pass `access_token` to https://account.unidays.ab.dev/oauth/userinfo to retrieve user details
+			// Pass `access_token` to `/oauth/userinfo` to retrieve user details
 			string userId = null;
 			string userFirstName = null;
 			string userLastName = null;

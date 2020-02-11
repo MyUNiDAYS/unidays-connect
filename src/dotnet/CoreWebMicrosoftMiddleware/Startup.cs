@@ -53,10 +53,12 @@ namespace CoreWebMicrosoftMiddleware
 					options.UserInformationEndpoint = $"{Configuration["UNiDAYS:OpenIdServer"]}/oauth/userinfo";
 
 				    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
-                    options.Scope.Add("email");
+					options.Scope.Add("openid");
                     options.Scope.Add("name");
+					options.Scope.Add("email");
+                    options.Scope.Add("verification");
 
-                    options.Events = new OAuthEvents
+					options.Events = new OAuthEvents
 					{
 						OnCreatingTicket = async context =>
 						{
