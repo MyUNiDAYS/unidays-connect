@@ -62,9 +62,12 @@ namespace StandardLibrary.Controllers
             var userGivenName = userInfoResponse.JsonObject["given_name"].ToString();
             var userFamilyName = userInfoResponse.JsonObject["family_name"].ToString();
             var userEmail = userInfoResponse.JsonObject["email"].ToString();
+            var verificationStatus = userInfoResponse.JsonObject["verification_status"].ToString();
 
             // Log user in using crude authentication cookie belonging to this application
-            var authCookie = new HttpCookie("auth", userSub);
+            var allUserInfo = string.Join(", ", userSub, userGivenName, userFamilyName, userEmail, verificationStatus);
+            var authCookie = new HttpCookie("auth", allUserInfo);
+
             authCookie.HttpOnly = true;
             HttpContext.Response.Cookies.Set(authCookie);
 
