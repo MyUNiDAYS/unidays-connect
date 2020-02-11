@@ -24,14 +24,14 @@ namespace Manual
 			stateCookie.HttpOnly = true;
 			context.Response.Cookies.Set(stateCookie);
 
-			// Redirect to the Authorization service
+			// Redirect to the Authorization server `oauth/authorize` endpoint
 			context.Response.StatusCode = 302;
 			context.Response.Headers.Add("Location"
 			    , $"{_openIdServer}/oauth/authorize" +
 			      $"?client_id={_clientId}" +
 			      $"&response_type=code" +
 			      $"&state={state}" + 
-				  "&scope=email name" + 
+				  "&scope=openid email name verification" + 
 			      "&redirect_uri=" + HttpUtility.UrlEncode(_returnUrl));
 		}
 	}
