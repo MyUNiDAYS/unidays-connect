@@ -1,6 +1,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OAuth;
@@ -10,7 +11,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json.Linq;
 
 namespace CoreWebMicrosoftMiddleware
 {
@@ -32,8 +32,13 @@ namespace CoreWebMicrosoftMiddleware
 				options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
-			
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+			services.Configure<IISServerOptions>(options =>
+			{
+				options.AutomaticAuthentication = false;
+			});
+
+			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
 			services.AddAuthentication(options =>
 				{
@@ -52,11 +57,11 @@ namespace CoreWebMicrosoftMiddleware
 					options.TokenEndpoint = $"{Configuration["UNiDAYS:OpenIdServer"]}/oauth/token";
 					options.UserInformationEndpoint = $"{Configuration["UNiDAYS:OpenIdServer"]}/oauth/userinfo";
 
-				    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
+					options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
 					options.Scope.Add("openid");
-                    options.Scope.Add("name");
+					options.Scope.Add("name");
 					options.Scope.Add("email");
-                    options.Scope.Add("verification");
+					options.Scope.Add("verification");
 
 					options.Events = new OAuthEvents
 					{
@@ -69,16 +74,16 @@ namespace CoreWebMicrosoftMiddleware
 							var response = await context.Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, context.HttpContext.RequestAborted);
 							response.EnsureSuccessStatusCode();
 
-							var user = JObject.Parse(await response.Content.ReadAsStringAsync()); //Do something with the scope information here
+							var user = JsonDocument.Parse(await response.Content.ReadAsStringAsync()); //Do something with the scope information here
 
-							context.RunClaimActions(user);
+							context.RunClaimActions(user.RootElement);
 						}
 					};
 				});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			app.UseDeveloperExceptionPage();
 
@@ -86,10 +91,17 @@ namespace CoreWebMicrosoftMiddleware
 
 			app.UseCookiePolicy();
 
-			app.UseMvc(routes =>
+			app.UseStaticFiles();
+
+			app.UseAuthentication();
+			app.UseRouting();
+
+			app.UseEndpoints(endpoints =>
 			{
-				routes.MapRoute(name: "default", template: "{controller}/{action=Index}/{id?}");
+				endpoints.MapRazorPages();
+				endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 			});
+
 		}
 	}
 }
