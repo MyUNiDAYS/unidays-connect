@@ -49,7 +49,7 @@ namespace CoreWebMicrosoftMiddleware
 					options.CallbackPath = new PathString(Configuration["UNiDAYS:ReturnUrl"]);
 
 					options.AuthorizationEndpoint = $"{Configuration["UNiDAYS:OpenIdServer"]}/oauth/authorize";
-					options.TokenEndpoint = $"{Configuration["UNiDAYS:OpenIdServer"]}/oauth/access_token";
+					options.TokenEndpoint = $"{Configuration["UNiDAYS:OpenIdServer"]}/oauth/token";
 					options.UserInformationEndpoint = $"{Configuration["UNiDAYS:OpenIdServer"]}/oauth/userinfo";
 
 				    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");

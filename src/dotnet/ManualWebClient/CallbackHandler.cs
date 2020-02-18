@@ -52,7 +52,7 @@ namespace Manual
 					{ "client_secret", _clientSecret },
 					{ "redirect_uri", _returnUrl }
 				});
-				var response = await tokenClient.PostAsync($"{_openIdServer}/oauth/access_token", content);
+				var response = await tokenClient.PostAsync($"{_openIdServer}/oauth/token", content);
 
 				// Read the access token from the response, assuming everything worked.
 				var responseString = await response.Content.ReadAsStringAsync();

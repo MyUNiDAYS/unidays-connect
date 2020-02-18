@@ -37,7 +37,7 @@ namespace StandardLibrary.Controllers
             HttpContext.Response.Cookies.Set(stateCookie);
 
             //Build a client and request the access token
-            var client = new OAuth2Client(new Uri($"{_openIdServer}/oauth/access_token"), _clientId, _clientSecret);
+            var client = new OAuth2Client(new Uri($"{_openIdServer}/oauth/token"), _clientId, _clientSecret);
             var tokenResponse = await client.RequestAuthorizationCodeAsync(
                 code: code,
                 redirectUri: _returnUrl,
