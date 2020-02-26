@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 
-namespace ManualWebClient
+namespace PkceWebClient
 {
 	/// <summary>
 	/// Handler to log the current user out
