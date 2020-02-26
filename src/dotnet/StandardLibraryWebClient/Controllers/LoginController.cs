@@ -29,7 +29,7 @@ namespace StandardLibrary.Controllers
                 clientId: _clientId,
                 redirectUri: _returnUrl,
                 state:state,
-                scope: "openid email name verification",
+                scope: "openid email name verification offline_access",
                 nonce: Guid.NewGuid().ToString());
 
             return Redirect(url);

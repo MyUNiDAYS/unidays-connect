@@ -24,7 +24,6 @@ namespace StandardLibrary.Controllers
                 return RedirectToAction("Index", "Home");
 
 
-
             // Validate CSRF state, it needs to match
             var requestStateCookie = HttpContext.Request.Cookies["state"];
             if (requestStateCookie?.Value == null || state != requestStateCookie.Value)
@@ -54,6 +53,41 @@ namespace StandardLibrary.Controllers
 
             //Access the user info endpoint to get the sub
             var token = tokenResponse.AccessToken;
+            var rToken = tokenResponse.RefreshToken;
+
+            //Get user info
+            var allUserInfo = await this.CallUserInfo(token);
+
+            // Log user in using crude authentication cookie belonging to this application
+            var authCookie = new HttpCookie("auth", allUserInfo);
+
+            authCookie.HttpOnly = true;
+            HttpContext.Response.Cookies.Set(authCookie);
+
+            //Exchange refresh token
+            var exchangeResponse = await client.RequestRefreshTokenAsync(
+               rToken,
+                additionalValues: new Dictionary<string, string>()
+                {
+                    {"client_id",_clientId },
+                    {"client_secret", _clientSecret }
+                }
+            );
+
+            if (exchangeResponse.IsError)
+                return RedirectToAction("Index", "Home");
+
+            //Access the user info endpoint to get the sub
+            token = exchangeResponse.AccessToken;
+            rToken = exchangeResponse.RefreshToken;
+           
+            allUserInfo = await this.CallUserInfo(token);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        private async Task<string> CallUserInfo(string token)
+        {
             var userInfoEP = new UserInfoClient(new Uri($"{_openIdServer}/oauth/userinfo"), token);
             var userInfoResponse = await userInfoEP.GetAsync();
             var userSub = userInfoResponse.JsonObject["sub"].ToString();
@@ -62,16 +96,11 @@ namespace StandardLibrary.Controllers
             var userGivenName = userInfoResponse.JsonObject["given_name"].ToString();
             var userFamilyName = userInfoResponse.JsonObject["family_name"].ToString();
             var userEmail = userInfoResponse.JsonObject["email"].ToString();
-            var verificationStatus = userInfoResponse.JsonObject["verification_status"].ToString();
+            var userType = userInfoResponse.JsonObject["verification_status"]["user_type"].ToString();
+            var verified = userInfoResponse.JsonObject["verification_status"]["verified"].ToString();
 
             // Log user in using crude authentication cookie belonging to this application
-            var allUserInfo = string.Join(", ", userSub, userGivenName, userFamilyName, userEmail, verificationStatus);
-            var authCookie = new HttpCookie("auth", allUserInfo);
-
-            authCookie.HttpOnly = true;
-            HttpContext.Response.Cookies.Set(authCookie);
-
-            return RedirectToAction("Index", "Home");
+            return $" at {DateTime.UtcNow.ToLongTimeString()} Id : `{userSub}`, First Name : `{userGivenName}`, Last Name : `{userFamilyName}`, Email : `{userEmail}`, User type : `{userType}`, Is verified : `{verified}`";
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Configuration;
 
-namespace Manual
+namespace ManualWebClient
 {
 	/// <summary>
 	/// Handler to begin the login process
@@ -12,7 +12,7 @@ namespace Manual
 		public bool IsReusable => true;
 
 	    private readonly string _clientId = WebConfigurationManager.AppSettings["ClientId"];
-	    private readonly string _returnUrl = WebConfigurationManager.AppSettings["ReturnUrl"];
+		private readonly string _returnUrl = WebConfigurationManager.AppSettings["ReturnUrl"];
 	    private readonly string _openIdServer = WebConfigurationManager.AppSettings["OpenIdServer"];
 
 
@@ -31,7 +31,7 @@ namespace Manual
 			      $"?client_id={_clientId}" +
 			      $"&response_type=code" +
 			      $"&state={state}" + 
-				  "&scope=openid email name verification" + 
+				  "&scope=openid offline_access email name verification" + 
 			      "&redirect_uri=" + HttpUtility.UrlEncode(_returnUrl));
 		}
 	}

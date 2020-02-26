@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace ManualWebClient
+namespace PkceWebClient
 {
 	/// <summary>
 	/// Handler for the index page for the application. Renders either a login button, or a welcome message to the logged in user
@@ -17,8 +17,8 @@ namespace ManualWebClient
 			// Read crude authentication cookie belonging to this application
 			var authCookie = context.Request.Cookies.Get("auth");
 
-			var refresh_token = (string)context.Application.Get("refresh_token");
-
+            var refresh_token = (string)context.Application.Get("refresh_token");
+			
 			// If we're logged in
 			if (authCookie?.Value != null && !string.IsNullOrEmpty(refresh_token))
 			{
@@ -37,7 +37,6 @@ namespace ManualWebClient
 			}
 
 			// We're not logged in, render Log In link
-
 			context.Response.Write($@"
 <html>
 <body>
@@ -45,7 +44,6 @@ namespace ManualWebClient
 </body>
 </html>
 ");
-
 		}
-	}
+    }
 }
