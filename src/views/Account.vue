@@ -1,23 +1,21 @@
 <template>
-<div>
+  <div>
     <h1>Account</h1>
     <div class="userInfo">
-        <p>{{ userInfo.sub}}</p>
-        <p>{{ userInfo.given_name}}</p>
-        <p>{{ userInfo.family_name}}</p>
-        <p>{{ userInfo.email}}</p>
-    </div> 
-</div>
+      <p>ID: {{ userInfo.sub }}</p>
+      <p>First Name: {{ userInfo.given_name }}</p>
+      <p>Last Name: {{ userInfo.family_name }}</p>
+      <p>Email: {{ userInfo.email }}</p>
+    </div>
+  </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 
 export default {
-   computed: mapState({
-       userInfo: state => state.user.userInfo
-   })
-}
+  computed: mapState({
+    userInfo: state => state.user.userInfo
+  })
+};
 </script>
-<style lang="sass" scoped>
-
-</style>
+<style lang="sass" scoped></style>

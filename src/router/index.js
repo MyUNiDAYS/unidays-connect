@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Callback from "../views/Callback.vue";
 import Account from "../views/Account.vue";
 import store from "../store";
 
@@ -21,11 +20,6 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Login.vue")
-  },
-  {
-    path: "/callback",
-    name: "Callback",
-    component: Callback
   },
   {
     path: "/account",

@@ -19,3 +19,8 @@
     </ul>
   </div>
 </template>
+<script>
+export default {
+  name: "SocialLinks"
+};
+</script>
