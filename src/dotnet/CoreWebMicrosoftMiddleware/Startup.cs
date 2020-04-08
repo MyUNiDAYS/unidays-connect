@@ -1,3 +1,4 @@
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 namespace CoreWebMicrosoftMiddleware
 {
@@ -92,6 +94,12 @@ namespace CoreWebMicrosoftMiddleware
 			app.UseCookiePolicy();
 
 			app.UseStaticFiles();
+			app.UseStaticFiles(new StaticFileOptions(new Microsoft.AspNetCore.StaticFiles.Infrastructure.SharedOptions() {
+				FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images"))
+			})
+			{				
+				RequestPath = "/Images"
+			});
 
 			app.UseAuthentication();
 			app.UseRouting();
