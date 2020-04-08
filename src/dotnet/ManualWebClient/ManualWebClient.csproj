@@ -52,6 +52,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="login-Green.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

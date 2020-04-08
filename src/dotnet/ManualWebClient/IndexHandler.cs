@@ -41,7 +41,7 @@ namespace ManualWebClient
 			context.Response.Write($@"
 <html>
 <body>
-	<a href=""/log-in"">Log In</a>
+	<a href=""/log-in""><img src=""/login-Green.png""></img></a>
 </body>
 </html>
 ");

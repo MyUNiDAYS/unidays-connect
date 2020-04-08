@@ -13,7 +13,7 @@
         <div class="">
             @if (String.IsNullOrEmpty(@ViewBag.Username))
             {
-                @Html.ActionLink("Log in", "Index", "Login", new object { }, new {@class = "btn"})
+                @Html.ActionLink("Log in", "Index", "Login", new object { }, new {@class = "btn btn-login"})
             }
             else
             {
@@ -24,3 +24,13 @@
         
     </div>
 </div>
+
+<style>
+a.btn-login
+{
+     background: url(../Images/login-Green.png) no-repeat top left;
+     display: block;
+     height: 50px;
+     text-indent: -9999px; /* hides the link text */
+}
+</style>
