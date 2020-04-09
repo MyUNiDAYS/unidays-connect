@@ -47,22 +47,11 @@
         </div>
       </div>
     </div>
-    <Loader v-if="isLoading" class="loader" />
   </div>
 </template>
 <script>
-import Loader from "@/components/Loader";
 import { mapActions, mapMutations, mapGetters } from "vuex";
 export default {
-  components: {
-    Loader
-  },
-  data() {
-    return {
-      isLoading: false,
-      hasAccessToken: this.$auth.accessToken == true
-    };
-  },
   computed: {
     ...mapGetters(["accessToken"])
   },

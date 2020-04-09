@@ -1,8 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import Account from "../views/Account.vue";
 import store from "../store";
+
+import Home from "../views/Home.vue";
+import Callback from "../views/Callback.vue";
+import CompleteSignup from "../views/CompleteSignup.vue";
+import Events from "../views/Events.vue";
+import EventSignup from "../views/EventSignup.vue";
 
 Vue.use(VueRouter);
 
@@ -22,9 +26,24 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/Login.vue")
   },
   {
-    path: "/account",
-    name: "Account",
-    component: Account,
+    path: "/events",
+    name: "Events",
+    component: Events
+  },
+  {
+    path: "/event-signup",
+    name: "EventSignup",
+    component: EventSignup
+  },
+  {
+    path: "/callback",
+    name: "Callback",
+    component: Callback
+  },
+  {
+    path: "/complete-signup",
+    name: "CompleteSignup",
+    component: CompleteSignup,
     meta: {
       requiresAuth: true
     }
@@ -43,7 +62,7 @@ router.beforeEach((to, from, next) => {
       next();
       return;
     }
-    next("/login");
+    next("/events");
   } else {
     next();
   }

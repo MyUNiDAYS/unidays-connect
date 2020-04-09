@@ -22,6 +22,7 @@ export default new Vuex.Store({
   },
   getters: {
     isLoggedIn: state => state.user.isLoggedIn,
+    userInfo: state => state.user.userInfo,
     accessToken: state => state.accessToken || localStorage.accessToken
   },
   mutations: {
@@ -41,7 +42,7 @@ export default new Vuex.Store({
   },
   actions: {
     login({ commit, getters }) {
-      return fetch("https://account.unidays.mk.dev/oauth/userinfo", {
+      return fetch(process.env.VUE_APP_ENV_USERINFO_ENDPOINT, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + getters.accessToken

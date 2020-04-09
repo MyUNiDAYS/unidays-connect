@@ -17,14 +17,13 @@ const auth_app = new Vue({
   data: {
     error: undefined,
     serviceConfig: new AuthorizationServiceConfiguration({
-      authorization_endpoint: "https://account.unidays.mk.dev/oauth/authorize",
-      userinfo_endpoint: "https://account.unidays.mk.dev/oauth/userinfo",
-      token_endpoint: "https://account.unidays.mk.dev/oauth/token"
+      authorization_endpoint: process.env.VUE_APP_ENV_AUTH_ENDPOINT,
+      token_endpoint: process.env.VUE_APP_ENV_TOKEN_ENDPOINT
     }),
     config: {
-      client_id: "OYSPFRV1G8QZLZBSUTQ6KTPEQK-HRZ6RXAQFEK4F-H0",
-      redirect_uri: "http://localhost:8082/login",
-      scope: "openid name verification email offline_access",
+      client_id: process.env.VUE_APP_ENV_CLIENT_ID,
+      redirect_uri: process.env.VUE_APP_ENV_REDIRECT_URI,
+      scope: process.env.VUE_APP_ENV_SCOPE,
       state: undefined
     },
     notifier: new AuthorizationNotifier(),

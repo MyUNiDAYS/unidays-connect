@@ -12,8 +12,17 @@
             <a :href="href" @click="navigate">Home</a>
           </li>
         </router-link>
-        <li class="menu-item"><a href="about.html">About</a></li>
-        <li class="menu-item"><a href="contact.html">Contact</a></li>
+        <router-link
+          class="menu-item"
+          to="/events"
+          v-slot="{ href, route, navigate, isExactActive }"
+        >
+          <li :class="[isExactActive && 'active']">
+            <a :href="href" @click="navigate">Events</a>
+          </li>
+        </router-link>
+        <li class="menu-item"><a href="#">About</a></li>
+
         <router-link
           v-if="isLoggedIn"
           class="menu-item menu-item-has-children"
