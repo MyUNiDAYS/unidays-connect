@@ -13,7 +13,7 @@
           <div class="power_events">
             <div class="power_events_wrapper">
               <div class="power_events_image">
-                <img class="primary_img" src="images/events/1.jpg" alt="" />
+                <img class="primary_img" src="@/assets/images/events/1.jpg" alt="" />
                 <div class="power_events_date">
                   <span class="day">04</span><span class="month">May</span>
                 </div>
@@ -40,7 +40,7 @@
           <div class="power_events">
             <div class="power_events_wrapper">
               <div class="power_events_image">
-                <img class="primary_img" src="images/events/2.jpg" alt="" />
+                <img class="primary_img" src="@/assets/images/events/2.jpg" alt="" />
                 <div class="power_events_date">
                   <span class="day">02</span><span class="month">May</span>
                 </div>
@@ -69,7 +69,7 @@
               <div class="power_events_list_image">
                 <img
                   class="primary_img"
-                  src="images/events/thumbnail1.jpg"
+                  src="@/assets/images/events/thumbnail1.jpg"
                   alt=""
                 />
               </div>
@@ -85,7 +85,7 @@
               <div class="power_events_list_image">
                 <img
                   class="primary_img"
-                  src="images/events/thumbnail2.jpg"
+                  src="@/assets/images/events/thumbnail2.jpg"
                   alt=""
                 />
               </div>
@@ -103,7 +103,7 @@
               <div class="power_events_list_image">
                 <img
                   class="primary_img"
-                  src="images/events/thumbnail3.jpg"
+                  src="@/assets/images/events/thumbnail3.jpg"
                   alt=""
                 />
               </div>
@@ -121,7 +121,7 @@
               <div class="power_events_list_image">
                 <img
                   class="primary_img"
-                  src="images/events/thumbnail4.jpg"
+                  src="@/assets/images/events/thumbnail4.jpg"
                   alt=""
                 />
               </div>

@@ -1,0 +1,110 @@
+/*----Tab --*/
+.power_tab{
+    margin-top: 158px;
+    .power_tab_button_group{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+        width: 100%;
+        overflow: auto;
+        li{
+            text-align: center;
+            &:first-child{
+                margin-top: 0px;
+            }
+            &:last-child{
+                margin-bottom: 0px;
+            }
+            a{
+                position: relative;
+                display: block;
+                cursor: pointer;
+                font-family: $heading-font;
+                font-size: $font-18;
+                line-height: 26px;
+                font-weight: $font-bold;
+                background: $primary-color;
+                color: $white-color;
+                padding: 22px 95px;
+                &.selected{
+                    background: $white-color;
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+    .power_tab_container{
+        display: block;
+        .power_tab_info{
+            position: relative;
+            font-size: $font-16;
+            line-height: 28px;
+            font-weight: $font-regular;
+            background: $white-color;
+            padding: 60px 50px 0px 50px;
+            display: none;
+            h2{
+                line-height: 54px;
+                margin-bottom: 20px;
+                span{
+                    color: $primary-color;
+                }
+            }
+            p{
+                font-size: $font-16;
+                line-height: 34px;
+                color: #62809a;
+            }
+        }
+    }
+    .power_button_group{
+        margin-top: 20px;
+        .power_button{
+            width: 100%;
+            background: $primary-color;
+            color: $white-color;
+            &:hover{
+                background: $white-color;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-desktop) {
+    .power_tab{
+        margin-top: 50px;
+        .power_tab_button_group{
+            display: block;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            overflow: auto;
+            li{
+                text-align: center;
+                margin: 2px 0px 2px 0px;
+                padding: 0px 0px 0px 0px;
+                &:first-child{
+                    margin-top: 0px;
+                }
+                &:last-child{
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        .power_tab_container{
+            .power_tab_info{
+                padding: 30px 30px 0px 30px;
+                h2{
+                    line-height: 36px;
+                }
+                .power_tab_content{
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+}

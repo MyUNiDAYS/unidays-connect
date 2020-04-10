@@ -1,0 +1,77 @@
+/*------- speaker -------*/
+.speakerbox{
+    position: relative;
+    margin-bottom: 30px;
+    @include transition(all 0.5s ease);
+    &:last-child{
+        margin-bottom: 0px;
+    }
+    .speakerbox_inner{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .speakerbox_intro{
+            text-align: right;
+            margin-right: 30px;
+            h3{
+                font-weight: $font-semibold;
+                margin-top: 0px;
+                margin-bottom: 12px;
+            }
+            h6{
+                font-size: $font-14;
+                font-weight: $font-semibold;
+                text-transform: uppercase;
+                letter-spacing: 4px;
+                margin-bottom: 0px;
+                color: $primary-color;
+            }
+        }
+        .speakerbox_image{
+            min-width: 130px;
+            max-width: 130px;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    &.second{
+        .speakerbox_intro{
+            h6{
+                color: $second-color;
+            }
+        }
+    }
+    
+    &.third{
+        .speakerbox_intro{
+            h6{
+                color: $third-color;
+            }
+        }
+    }
+    
+    &.fourth{
+        .speakerbox_intro{
+            h6{
+                color: $fourth-color;
+            }
+        }
+    }
+    
+    &.fifth{
+        .speakerbox_intro{
+            h6{
+                color: $fifth-color;
+            }
+        }
+    }
+    
+    &.sixth{
+        .speakerbox_intro{
+            h6{
+                color: $sixth-color;
+            }
+        }
+    }
+}

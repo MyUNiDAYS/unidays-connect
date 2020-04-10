@@ -1,0 +1,285 @@
+html {
+    scroll-behavior: smooth;
+}
+body{
+    font-family: $paragraph-font;
+    font-size: $font-16;
+    line-height: 30px;
+    color: #373738;
+    overflow-x: hidden;
+    webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: $heading-font;
+    font-weight: $font-bold;
+    margin: 0px;
+}
+h1{
+    font-size: $font-36;
+}
+h2{
+    font-size: $font-30; 
+}
+h3{
+    font-size: $font-24;
+}
+h4{
+    font-size: $font-20;
+}
+h5{
+    font-size: $font-18;
+}
+h6{
+    font-size: $font-16;
+}
+p{
+    margin-bottom: 0px;
+    font-family: $paragraph-font;
+}
+a{
+    color: $primary-color;
+    text-decoration: none;
+    @include transition(color 0.5s, background-color 0.8s);
+}
+a:hover{
+    color: $primary-color;
+    text-decoration: none;
+    @include transition(color 0.5s, background-color 0.8s);
+}
+img{
+    max-width: 100%;
+}
+.section{
+    position: relative;
+    padding: {
+        top: 80px;
+        bottom: 80px;
+    };
+}
+.white-color{
+    color: $white-color;
+}
+.black-color{
+    color: $black-color;
+}
+.primary-color{
+    color: $primary-color;
+}
+.second-color{
+    color: $second-color;
+}
+.third-color{
+    color: $third-color;
+}
+.fourth-color{
+    color: $fourth-color;
+}
+.fifth-color{
+    color: $fifth-color;
+}
+.sixth-color{
+    color: $sixth-color;
+}
+
+/* Define BG Color */
+.white-bg-color{
+    background: $white-color;
+}
+.black-bg-color{
+    background: $black-color;
+}
+.primary-bg-color{
+    background: $primary-color;
+}
+.second-bg-color{
+    background: $second-color;
+}
+.third-bg-color{
+    background: $third-color;
+}
+.fourth-bg-color{
+    background: $fourth-color;
+}
+.fifth-bg-color{
+    background: $fifth-color;
+}
+.sixth-bg-color{
+    background: $sixth-color;
+}
+
+/* Social Color */
+.facebook a{
+    color: $facebook-color;
+}
+.twitter a{
+    color: $twitter-color;
+}
+.linkedin a{
+    color: $linkedin-color;
+}
+.instagram a{
+    color: $instagram-color;
+}
+.gplus a{
+    color: $gplus-color;
+}
+.skype a{
+    color: $skype-color;
+}
+.rss a{
+    color: $rss-color;
+}
+.pinterest a{
+    color: $rss-color;
+}
+
+
+/*-------------------------------*/
+    /*Preloader*/
+/*-------------------------------*/
+
+.preloader {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1111;
+    overflow-x: hidden;
+    background: #fff;
+}
+ 
+.preloader-inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+ 
+.siteloading-preloader {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 2em;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+}
+ 
+.siteloading-preloader,
+.siteloading-preloader:before,
+.siteloading-preloader:after {
+    animation: 1.15s infinite ease-in-out;
+    -o-animation: 1.15s infinite ease-in-out;
+    -webkit-animation: 1.15s infinite ease-in-out;
+    -moz-animation: 1.15s infinite ease-in-out;
+}
+ 
+.siteloading-preloader:before,
+.siteloading-preloader:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    -o-transform: scale(0);
+    -ms-transform: scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    animation: siteloading-animation 1.73s infinite ease-in-out;
+    -o-animation: siteloading-animation 1.73s infinite ease-in-out;
+    -webkit-animation: siteloading-animation 1.73s infinite ease-in-out;
+    -moz-animation: siteloading-animation 1.73s infinite ease-in-out;
+}
+.siteloading-preloader:before{
+    background-color: $primary-color;
+}
+ .siteloading-preloader:after {
+    background-color: $fifth-color;
+    animation-delay: 0.86s;
+    -o-animation-delay: 0.86s;
+    -webkit-animation-delay: 0.86s;
+    -moz-animation-delay: 0.86s;
+}
+ 
+@keyframes siteloading-animation {
+    0% {
+       transform: translateX(-100%) scale(0);
+    }
+    50% {
+       transform: translateX(0%) scale(1);
+    }
+    100% {
+       transform: translateX(100%) scale(0);
+    }
+}
+ 
+@-o-keyframes siteloading-animation {
+    0% {
+       -o-transform: translateX(-100%) scale(0);
+    }
+    50% {
+       -o-transform: translateX(0%) scale(1);
+    }
+    100% {
+       -o-transform: translateX(100%) scale(0);
+    }
+}
+ 
+@-ms-keyframes siteloading-animation {
+    0% {
+       -ms-transform: translateX(-100%) scale(0);
+    }
+    50% {
+       -ms-transform: translateX(0%) scale(1);
+    }
+    100% {
+       -ms-transform: translateX(100%) scale(0);
+    }
+}
+ 
+@-webkit-keyframes siteloading-animation {
+    0% {
+       -webkit-transform: translateX(-100%) scale(0);
+    }
+    50% {
+       -webkit-transform: translateX(0%) scale(1);
+    }
+    100% {
+       -webkit-transform: translateX(100%) scale(0);
+    }
+}
+ 
+@-moz-keyframes siteloading-animation {
+    0% {
+       -moz-transform: translateX(-100%) scale(0);
+    }
+    50% {
+       -moz-transform: translateX(0%) scale(1);
+    }
+    100% {
+       -moz-transform: translateX(100%) scale(0);
+    }
+}
+
+
+/*---- Effect ----*/
+
+.album_gallery_part{
+    overflow: hidden;
+    img{
+        transition: all 1.5s cubic-bezier(0,0,.2,1);
+    }
+    &:hover img{
+        transform: scale3d(1.1,1.1,1.1);
+    }
+}

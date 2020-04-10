@@ -24,7 +24,7 @@
         </div>
         <div class="offset-lg-1 col-lg-3 col-md-3">
           <div class="quickcontact">
-            <img src="images/phone_white.png" alt="phone" />
+            <img src="@/assets/images/phone_white.png" alt="phone" />
             <div><span>Contact us to donate</span><br />(+123)987.654.32</div>
           </div>
         </div>

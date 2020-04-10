@@ -6,7 +6,7 @@
         <div class="middle-bar-inner">
           <div class="logo">
             <router-link to="/">
-              <img src="images/logo.png" alt="Oellfare" />
+              <img src="@/assets/images/logo.png" alt="Oellfare" />
             </router-link>
           </div>
         </div>
@@ -16,7 +16,7 @@
       <div class="container">
         <div class="navigation">
           <!-- <div class="element phone">
-            <img src="images/phone.png" alt="phone" />
+            <img src="@/assets/images/phone.png" alt="phone" />
             <div><span>Contact us to donate</span><br />(+123)987.654.32</div>
           </div> -->
           <Navigation />

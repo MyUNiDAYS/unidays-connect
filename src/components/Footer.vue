@@ -5,7 +5,7 @@
         <div class="footer_bottom_inner">
           <div class="logo-footer">
             <router-link to="/">
-              <img src="images/logo-footer.png" alt="Oellfare" />
+              <img src="@/assets/images/logo-footer.png" alt="Oellfare" />
             </router-link>
           </div>
           <div class="copyright">

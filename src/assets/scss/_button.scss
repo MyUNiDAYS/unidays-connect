@@ -1,0 +1,615 @@
+/*---------- Button Section ------------*/
+.power_button_group{
+    position: relative;
+    z-index: 1;
+    display: block;
+}
+.power_button{
+    position: relative;
+    width: auto;
+    display: inline-block;
+    font-family: $heading-font;
+    font-size: $font-14;
+    line-height: 24px;
+    font-weight: $font-medium;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    padding: 13px 45px;
+    background: transparent;
+    @include bordered(0px, solid, $white-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 13px rgba($primary-color, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    @include transition(all 0.5s ease);
+}
+.power_button:hover{
+    @include transition(all 0.5s ease);
+}
+.power_button span.button_value {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    vertical-align: middle;
+}
+.power_button span.power_button_icon{
+    position: relative;
+    z-index: 2;
+}
+.power_button.power_button_icon_left .power_button_icon{
+    margin-right: 15px;
+}
+.power_button.power_button_icon_right .power_button_icon{
+    margin-left: 15px;
+}
+
+.power_button:before,
+.power_button:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    z-index: 0;
+    border-radius: 30px;
+    @include transition(all 0.5s ease);
+}
+/*----- Button -----*/
+.power_button{
+    color: $white-color;
+    &:hover{
+        color: $primary-color;
+    }
+    &:before{
+        background: $white-color;
+    }
+    &:after{
+        background: $primary-color;
+    }
+}
+
+
+/*----- Button Second -----*/
+.power_button.second{
+    color: $white-color;
+    box-shadow: 0px 0px 13px rgba($second-color, 0.2);
+    &:hover{
+        color: $second-color;
+    }
+    &:before{
+        background: $white-color;
+    }
+    &:after{
+        background: $second-color;
+    }
+}
+
+/*----- Button third -----*/
+.power_button.third{
+    color: $white-color;
+    box-shadow: 0px 0px 13px rgba($third-color, 0.2);
+    &:hover{
+        color: $third-color;
+    }
+    &:before{
+        background: $white-color;
+    }
+    &:after{
+        background: $third-color;
+    }
+}
+
+/*----- Button fourth -----*/
+.power_button.fourth{
+    color: $white-color;
+    box-shadow: 0px 0px 13px rgba($fourth-color, 0.2);
+    &:hover{
+        color: $fourth-color;
+    }
+    &:before{
+        background: $white-color;
+    }
+    &:after{
+        background: $fourth-color;
+    }
+}
+
+/*----- Button fifth -----*/
+.power_button.fifth{
+    color: $white-color;
+    box-shadow: 0px 0px 13px rgba($fifth-color, 0.2);
+    &:hover{
+        color: $fifth-color;
+    }
+    &:before{
+        background: $white-color;
+    }
+    &:after{
+        background: $fifth-color;
+    }
+}
+
+/*----- Button sixth -----*/
+.power_button.sixth{
+    color: $white-color;
+    box-shadow: 0px 0px 13px rgba($sixth-color, 0.2);
+    &:hover{
+        color: $sixth-color;
+    }
+    &:before{
+        background: $white-color;
+    }
+    &:after{
+        background: $sixth-color;
+    }
+}
+
+
+/*---------- Button Alternate ------------*/
+.power_button.alt{
+    background: $white-color;
+    color: $primary-color;
+    &:hover{
+        background: $primary-color;
+        color: $white-color;
+    }
+    &:before{
+        background: $primary-color;
+    }
+    &:after{
+        background: $white-color;
+    }
+}
+
+/*---------- Button Alternate Second ------------*/
+.power_button.alt.second{
+    background: $white-color;
+    color: $second-color;
+    &:hover{
+        background: $second-color;
+        color: $white-color;
+    }
+    &:before{
+        background: $second-color;
+    }
+    &:after{
+        background: $white-color;
+    }
+}
+
+/*---------- Button Alternate Third ------------*/
+.power_button.alt.third{
+    background: $white-color;
+    color: $third-color;
+    &:hover{
+        background: $third-color;
+        color: $white-color;
+    }
+    &:before{
+        background: $third-color;
+    }
+    &:after{
+        background: $white-color;
+    }
+}
+
+/*---------- Button Alternate fourth ------------*/
+.power_button.alt.fourth{
+    background: $white-color;
+    color: $fourth-color;
+    &:hover{
+        background: $fourth-color;
+        color: $white-color;
+    }
+    &:before{
+        background: $fourth-color;
+    }
+    &:after{
+        background: $white-color;
+    }
+}
+
+/*---------- Button Alternate fifth ------------*/
+.power_button.alt.fifth{
+    background: $white-color;
+    color: $fifth-color;
+    &:hover{
+        background: $fifth-color;
+        color: $white-color;
+    }
+    &:before{
+        background: $fifth-color;
+    }
+    &:after{
+        background: $white-color;
+    }
+}
+
+/*---------- Button Alternate sixth ------------*/
+.power_button.alt.sixth{
+    background: $white-color;
+    color: $sixth-color;
+    &:hover{
+        background: $sixth-color;
+        color: $white-color;
+    }
+    &:before{
+        background: $sixth-color;
+    }
+    &:after{
+        background: $white-color;
+    }
+}
+
+/*---------- Button Effect 1 ------------*/
+.power_button.effect_1:before {
+    right: 100%;
+    top: 0;
+}
+.power_button.effect_1:hover::before {
+    right: 0;
+}
+.power_button.effect_1:after {
+    left: 0;
+    top: 0;
+}
+.power_button.effect_1:hover::after {
+    left: 100%;
+}
+
+/*---------- Button Effect 2 ------------*/
+.power_button.effect_2:before {
+    bottom: 100%;
+    left: 0;
+}
+.power_button.effect_2:hover::before {
+    bottom: 0;
+}
+.power_button.effect_2:after {
+    left: 0;
+    top: 0;
+}
+.power_button.effect_2:hover::after {
+    top: 100%;
+}
+
+/*---------- Button Effect 3 ------------*/
+.power_button.effect_3:before {
+    left: 100%;
+    top: 0;
+}
+.power_button.effect_3:hover::before {
+    left: 0;
+}
+.power_button.effect_3:after {
+    right: 0;
+    top: 0;
+}
+.power_button.effect_3:hover::after {
+    right: 100%;
+}
+
+/*---------- Button Effect 4 ------------*/
+.power_button.effect_4:before {
+    top: 100%;
+    left: 0;
+}
+.power_button.effect_4:hover::before {
+    top: 0;
+}
+.power_button.effect_4:after {
+    bottom: 0;
+    left: 0;
+}
+.power_button.effect_4:hover::after {
+    bottom: 100%;
+}
+
+/*---------- Button Effect 5 ------------*/
+.power_button.effect_5:before {
+    left: 0;
+    top: 0;
+    transform: scale(0);
+}
+.power_button.effect_5:hover::before {
+    right: 0;
+    transform: scale(1);
+}
+.power_button.effect_5:after {
+    left: 0;
+    top: 0;
+    transform: scale(1);
+}
+.power_button.effect_5:hover::after {
+    left: 0;
+    transform: scale(0);
+}
+
+/*---------- Button Effect 6 ------------*/
+.power_button.effect_6:before {
+    right: 90%;
+    top: 0;
+}
+.power_button.effect_6:hover::before {
+    right: -90%;
+}
+.power_button.effect_6:after {
+    left: 90%;
+    top: 0;
+}
+.power_button.effect_6:hover::after {
+    left: -90%;
+}
+
+/*---------- Button Effect 7 ------------*/
+.power_button.effect_7:before {
+    top: 90%;
+    left: 0;
+}
+.power_button.effect_7:hover::before {
+    top: -50%;
+    transform: skewX(-45deg);
+    -webkit-transform: skewX(-45deg);
+}
+.power_button.effect_7:after {
+    bottom: 90%;
+    left: 0;
+}
+.power_button.effect_7:hover::after {
+    bottom: -50%;
+    transform: skewX(45deg);
+    -webkit-transform: skewX(45deg);
+}
+
+/*---------- Button Effect 8 ------------*/
+.power_button.effect_8:before {
+    top: 90%;
+    left: 0;
+}
+.power_button.effect_8:hover::before {
+    top: -50%;
+    transform: skewX(45deg);
+    -webkit-transform: skewX(45deg);
+}
+.power_button.effect_8:after {
+    bottom: 90%;
+    left: 0;
+}
+.power_button.effect_8:hover::after {
+    bottom: -50%;
+    transform: skewX(-45deg);
+    -webkit-transform: skewX(-45deg);
+}
+
+/*---------- Button Effect 9 ------------*/
+.power_button.effect_9:before{
+    top: 0;
+    left: 100%;
+}
+.power_button.effect_9:hover:before{
+    top: 0;
+    left: 50%;
+}
+.power_button.effect_9:after{
+    top: 0;
+    right: 0;
+}
+.power_button.effect_9:hover:after{
+    top: 0;
+    right: 50%;
+}
+.power_button.effect_9:hover {
+    border-radius: 30px;
+}
+
+/*---------- Button Effect 10 ------------*/
+.power_button.effect_10:before{
+    top: 0;
+    right: 100%;
+}
+.power_button.effect_10:hover:before{
+    top: 0;
+    right: 0;
+}
+.power_button.effect_10:after {
+    top: 0;
+    left: 0;
+}
+.power_button.effect_10:hover:after {
+    top: 0;
+    left: 100%;
+}
+.power_button.power_button_icon_left.effect_10 .power_button_icon{
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.power_button.power_button_icon_left.effect_10:hover .power_button_icon{
+    left: -25%;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.power_button.power_button_icon_right.effect_10 .power_button_icon{
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    margin-left: 0px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.power_button.power_button_icon_right.effect_10:hover .power_button_icon{
+    left: 130%;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+/*---------- Button Effect 11 ------------*/
+.power_button.effect_11:before {
+    left: 0;
+    bottom: 100%;
+}
+.power_button.effect_11:hover:before {
+    left: 0;
+    bottom: 0;
+}
+.power_button.effect_11:after{
+    top: 0;
+    left: 0;
+}
+.power_button.effect_11:hover:after{
+    top: 100%;
+    left: 0;
+}
+.power_button.power_button_icon_left.effect_11 .power_button_icon{
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.power_button.power_button_icon_left.effect_11:hover .power_button_icon{
+    left: -50%;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.power_button.power_button_icon_right.effect_11 .power_button_icon{
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    margin-left: 0px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.power_button.power_button_icon_right.effect_11:hover .power_button_icon{
+    left: 115%;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+/*---------- Button Effect 12 ------------*/
+.power_button.effect_12:before {
+    content: attr(data-text);
+    right: 100%;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.power_button.effect_12:hover:before {
+    right: 0%;
+    opacity: 1;
+}
+.power_button.effect_12:hover span {
+    -webkit-transform: translateX(200%);
+    -moz-transform: translateX(200%);
+    -ms-transform: translateX(200%);
+    transform: translateX(200%);
+}
+.power_button.effect_12:after{
+    top: 0;
+    left: 0;
+}
+.power_button.effect_12:hover:after{
+    top: 100%;
+    left: 0;
+}
+/*---------- Button Effect 13 ------------*/
+.power_button.effect_13:before {
+    content: attr(data-text);
+    right: 0;
+    bottom: 100%;
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.power_button.effect_13:hover:before {
+    bottom: 0%;
+    opacity: 1;
+}
+.power_button.effect_13:hover span {
+    -webkit-transform: translateY(200%);
+    -moz-transform: translateY(200%);
+    -ms-transform: translateY(200%);
+    transform: translateY(200%);
+}
+.power_button.effect_13:after{
+    top: 0;
+    left: 0;
+}
+.power_button.effect_13:hover:after{
+    top: 100%;
+    left: 0;
+}
+
+
+.anim-img{
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-30px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}

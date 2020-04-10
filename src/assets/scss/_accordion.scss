@@ -1,0 +1,124 @@
+.power-accordion {
+    margin:{
+        bottom: 30px;
+    }
+    padding:{
+        top: 50px;
+        right: 70px;
+    }
+    .title{
+        font-weight: $font-medium;
+        line-height: 54px;
+        margin-bottom: 15px;
+    }
+    .power-card-header {
+        padding: 0px;
+        background-color: transparent;
+        .power-accordion-title {
+            padding-right: 20px;
+            display: inline-block;
+        }
+        >.power-btn-link {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            color: $black-color;
+            font-weight: $font-semibold;
+            padding: 10px 0px;
+            @include bordered-bottom(1px, solid, #dedede);
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            
+            .power_accordion_icon_group {
+                position: absolute;
+                right: 0;
+            }
+
+            &[aria-expanded=true] {
+                @include bordered-bottom(0px, solid, #dedede);
+            }
+            &:hover{
+                text-decoration: none
+            }
+            &:focus{
+                text-decoration: none
+            }
+            >.icon-left {
+                padding-right: 20px;
+                float: left
+            }
+            &[aria-expanded=true] i{
+                color: $primary-color;
+            }
+            &[aria-expanded=false] i{
+                color: $black-color;
+            }
+            &[aria-expanded=true] .icon-closed {
+                display: block
+            }
+            &[aria-expanded=true] .icon-open {
+                display: none
+            }
+            &[aria-expanded=false] .icon-closed {
+                display: none
+            }
+            &[aria-expanded=false] .icon-open {
+                display: block;
+            }
+            .icon-right {
+                padding-left: 15px;
+            }
+            .icon-left {
+                padding-right: 15px;
+            }
+            &[aria-expanded="true"] .power-accordion-title{
+                color: $primary-color;
+            }
+            &[aria-expanded="false"] .power-accordion-title{
+                color: $black-color;
+            }
+        }
+    }
+    .power-card-body {
+        padding: 15px 0px;
+    }
+
+    .ext_content {
+        display: flex;
+        margin: {
+            top: 30px;
+        }
+        .inline{
+            width: 100%;
+            h6{
+                font-size: $font-14;
+                margin-bottom: 15px;
+                img{
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-desktop) {
+    .power-accordion{
+        .power-card{
+            &:last-child{
+                .power-card-body{
+                    padding-bottom: 0px;;
+                }
+            }
+        }
+        .ext_content{
+            display: block;
+            .inline + .inline{
+                h6 + h6{
+                    margin-bottom: 0px;
+                }
+            }
+        }
+    }
+}

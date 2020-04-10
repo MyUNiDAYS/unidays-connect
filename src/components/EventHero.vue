@@ -2,7 +2,7 @@
   <div class="upcoming_event">
     <div class="upcoming_event_wrapper">
       <div class="upcoming_event_image">
-        <img class="primary_img" src="images/events/large_1.jpg" alt="" />
+        <img class="primary_img" src="@/assets/images/events/large_1.jpg" alt="" />
       </div>
       <div class="upcoming_event_content">
         <div class="row">

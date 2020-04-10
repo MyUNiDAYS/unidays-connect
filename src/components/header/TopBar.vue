@@ -5,7 +5,7 @@
         <div class="top-element">
           <div class="top-left-elements">
             <div class="element schedule">
-              <img src="images/clock.png" alt="schedule" />
+              <img src="@/assets/images/clock.png" alt="schedule" />
               <div>Mon-Sat, 9.00am-9.00pm</div>
             </div>
           </div>

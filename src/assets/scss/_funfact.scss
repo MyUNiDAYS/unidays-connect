@@ -1,0 +1,173 @@
+/*------- FunFact -------*/
+.power_funfacts{
+    position: relative;
+    z-index: 1;
+    background: $primary-color;
+    display: inline-flex;
+    margin-top: -65px;
+    align-items: center;
+    padding: {
+        top: 30px;
+        bottom: 30px;
+    }
+    box-shadow: 2px 0px 13px rgba($primary-color, 0.35);
+    .power_funbox{
+        padding: {
+            left: 80px;
+            right: 80px;
+        }
+        @include bordered-right(1px, solid, rgba($white-color, 0.5));
+        &:last-child{
+            @include bordered-right(0px, solid, rgba($white-color, 0.5));
+        }
+        .power_fun_content{
+            position: relative;
+            display: inline-block;
+            .power_fun_value{
+                font-size: $font-30;
+                line-height: 40px;
+                font-weight: $font-bold;
+                color: $white-color;
+            }
+            .power_fun_title{
+                font-size: $font-16;
+                line-height: 30px;
+                font-weight: $font-semibold;
+                color: $white-color;
+            }
+
+            .power_fun_desc{
+                font-size: $font-14;
+                line-height: 28px;
+                font-weight: $font-regular;
+                color: $white-color;
+            }
+        }
+    }
+    &.full{
+        display: flex;
+        margin-top: 0px;
+        margin-bottom: -65px;
+    }
+    &.second{
+        background: $second-color;
+        box-shadow: 2px 0px 13px rgba($second-color, 0.35)
+    }
+    &.third{
+        background: $third-color;
+        box-shadow: 2px 0px 13px rgba($third-color, 0.35)
+    }
+    &.fourth{
+        background: $fourth-color;
+        box-shadow: 2px 0px 13px rgba($fourth-color, 0.35)
+    }
+    &.fifth{
+        background: $fifth-color;
+        box-shadow: 2px 0px 13px rgba($fifth-color, 0.35)
+    }
+    &.sixth{
+        background: $sixth-color;
+        box-shadow: 2px 0px 13px rgba($sixth-color, 0.35)
+    }
+}
+
+.volunteer_facts {
+    background-position: top center;
+    .power_funfacts{
+        display: flex;
+        margin-top: 0px;
+        background: none;
+        box-shadow: none;
+        justify-content: space-around;
+        padding: {
+            top: 0px;
+            bottom: 70px;
+        }
+        .power_funbox{
+            padding: {
+                left: 20px;
+                right: 20px;
+            }
+            @include bordered-right(0px, solid, rgba($white-color, 0.5));
+            .power_fun_content{
+                .power_fun_value{
+                    font-size: 48px;
+                    line-height: 52px;
+                    font-weight: $font-bold;
+                    color: $white-color;
+                }
+                .power_fun_title{
+                    font-size: $font-16;
+                    line-height: 30px;
+                    font-weight: $font-semibold;
+                    color: $white-color;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-largedesktop) {
+    .power_funfacts{
+        margin-top: 0px;
+    }
+}
+@media screen and (max-width: $breakpoint-desktop) {
+    .power_funfacts{
+        width: 100%;
+        justify-content: center;
+        .power_funbox{
+            padding: {
+                left: 20px;
+                right: 20px;
+            }
+        }&.full{
+            display: block;
+            justify-content: center;
+            .power_funbox{
+                text-align: center;
+                @include bordered-right(0px, solid, rgba($white-color, 0.5));
+                padding: {
+                    top: 10px;
+                    right: 20px;
+                    bottom: 10px;
+                    left: 20px;
+                }
+            }
+        }
+    }
+    .volunteer_facts .power_funfacts{
+        .power_funbox{
+            .power_fun_content {
+                .power_fun_value{
+                    font-size: 36px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-tablet) {
+    .volunteer_facts .power_funfacts{
+        display: block;
+        text-align: center;
+        .power_funbox{
+            padding: 10px 0px;
+        }
+    }
+}
+@media screen and (max-width: $breakpoint-minimobile) {
+    .power_funfacts{
+        display: block;
+        justify-content: center;
+        .power_funbox{
+            text-align: center;
+            @include bordered-right(0px, solid, rgba($white-color, 0.5));
+            padding: {
+                top: 10px;
+                right: 20px;
+                bottom: 10px;
+                left: 20px;
+            }
+        }
+    }
+}

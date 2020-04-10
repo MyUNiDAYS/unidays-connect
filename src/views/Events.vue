@@ -4,7 +4,7 @@
       <div class="container">
         <div class="power_heading_wrapper text-center">
           <div class="power_heading_icon">
-            <img src="images/header_icon1.png" alt="" />
+            <img src="@/assets/images/header_icon1.png" alt="" />
           </div>
           <h1 class="power_title ">Upcoming Event</h1>
           <div class="power_title_line"></div>
@@ -15,7 +15,7 @@
         <div class="container">
           <div class="power_heading_wrapper text-center">
             <div class="power_heading_icon">
-              <img src="images/header_icon1.png" alt="" />
+              <img src="@/assets/images/header_icon1.png" alt="" />
             </div>
             <h1 class="power_title ">Latest Events</h1>
             <div class="power_title_line"></div>
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     getImgUrl(img) {
-      return "images/causes/" + img;
+      return "@/assets/images/causes/" + img;
     }
   }
 };

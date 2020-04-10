@@ -1,0 +1,172 @@
+.slider{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include transition(all 0.5s ease);
+    .typed{
+        color: $primary-color;
+    }
+    .typed-cursor{
+        font-size: $font-60;
+        font-weight: $font-bold;
+        color: $primary-color;
+    }
+    .slide-content{
+        padding: 200px 0px 200px 0px;
+        .sub_heading{
+            font-family: $paragraph-font;
+            line-height: 35px;
+            font-weight: $font-semibold;
+            letter-spacing: 3px;
+            color: $white-color;
+            text-transform: uppercase;
+        }
+        .heading{
+            font-size: $font-60;
+            line-height: 72px;
+            font-weight: $font-bold;
+            color: $white-color;
+            margin-top: 25px;
+        }
+        .power_button_group{
+            margin-top: 50px;
+            .power_button{
+                margin: 0px 15px;
+            }
+        }
+    }
+}
+.slider_type2 {
+    .slider{
+        .slide-content{
+            padding: 200px 0px 250px 0px;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+    .slider {
+        .slide-content {
+            .heading{
+                font-size: 44px;
+                line-height: 52px;
+            }
+        }
+    }
+}
+
+
+/*--------- slider_carousel Navs --------*/
+.owl-carousel.slider_carousel{
+    .owl-nav {
+        margin-top: 0px;
+        text-align: center;
+        -webkit-tap-highlight-color: transparent;
+        position: absolute;
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+        width: 100%;
+        z-index: 1;
+        .owl-prev{
+            float: left;
+            margin-left: -2px;
+        }
+        .owl-next{
+            float: right;
+            margin-right: -2px;
+        }
+        button.owl-prev, 
+        button.owl-next {
+            background: transparent;
+            color: $primary-color;
+            border: none;
+            padding: 0 !important;
+            font: inherit;
+            width: 40px;
+            height: 60px;
+            line-height: 28px;
+            border-radius: 0%;
+            @include bordered(2px, solid, $primary-color);
+            outline: none;
+            @include transition(color 0.5s, background-color 0.8s);
+        }
+    }
+    &.side_nav{
+        .owl-nav {
+            margin-top: 0px;
+            text-align: left;
+            -webkit-tap-highlight-color: transparent;
+            position: absolute;
+            top: auto;
+            bottom: 75px;
+            left: 0;
+            width: auto;
+            z-index: 1;
+
+            .owl-prev,
+            .owl-next{
+                float: none;
+                margin: 0px 10px;
+            }
+            button.owl-prev, 
+            button.owl-next {
+                background: transparent;
+                color: $primary-color;
+                border: none;
+                padding: 0 !important;
+                font: inherit;
+                width: 30px;
+                height: 30px;
+                line-height: 28px;
+                border-radius: 0%;
+                @include bordered(1px, solid, $primary-color);
+                outline: none;
+                @include transition(color 0.5s, background-color 0.8s);
+            }
+            button.owl-prev:hover, 
+            button.owl-next:hover {
+                background: $primary-color;
+                color: $white-color;
+            }
+        }
+    }
+}
+/*--------- slider_carousel Dots --------*/
+.owl-carousel.slider_carousel{
+    .owl-dots {
+        position: absolute;
+        right: auto;
+        bottom: 75px;
+        text-align: center; 
+        display: flex;
+        width: 100%;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        button.owl-dot{
+            outline: none;
+            margin: 0px 5px;
+            span{
+                background: $white-color;
+                outline: none;
+                width: 10px;
+                height: 10px;
+                display: block;
+                border-radius: 100%;
+            }
+            &.active span{
+                background: $primary-color;
+            }
+        }
+    }
+    &.side_dots{
+        .owl-dots{
+            right: 5px;
+            text-align: right; 
+            width: auto;
+        }
+    }
+}

@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-5 d-none d-lg-block">
             <div class="call_to_image_box">
-              <img src="images/image1.png" alt="" />
+              <img src="@/assets/images/image1.png" alt="" />
             </div>
           </div>
           <div class="col-lg-7">
