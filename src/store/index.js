@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import eventData from "@/data/eventData";
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -23,7 +25,9 @@ export default new Vuex.Store({
   getters: {
     isLoggedIn: state => state.user.isLoggedIn,
     userInfo: state => state.user.userInfo,
-    accessToken: state => state.accessToken || localStorage.accessToken
+    accessToken: state => state.accessToken || localStorage.accessToken,
+    eventData: () => eventData,
+    signupEventId: () => localStorage.signupEventId
   },
   mutations: {
     login(state, userInfo) {
@@ -38,6 +42,9 @@ export default new Vuex.Store({
     },
     setAccessToken(state, token) {
       state.accessToken = token;
+    },
+    setSignupEventId(state, id) {
+      localStorage.setItem("signupEventId", id);
     }
   },
   actions: {

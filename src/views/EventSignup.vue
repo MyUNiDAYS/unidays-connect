@@ -9,9 +9,9 @@
             This event is student only event. <br />To verify that you are a
             student Log in with UNiDAYS
           </p>
-          <div class="redirect-link" @click.prevent="redirect">
+          <a class="redirect-link" @click.prevent="redirect">
             <img src="@/assets/btn-log in with UNiDAYS-green.png" alt="" />
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -21,6 +21,7 @@
 </template>
 <script>
 import Loader from "@/components/Loader";
+import { mapMutations } from "vuex";
 export default {
   components: {
     Loader
@@ -30,8 +31,11 @@ export default {
       isRedirecting: false
     };
   },
+  props: ["query"],
   methods: {
+    ...mapMutations(["setSignupEventId"]),
     redirect() {
+      this.setSignupEventId(this.query);
       this.isRedirecting = true;
       this.$auth.redirect();
     }

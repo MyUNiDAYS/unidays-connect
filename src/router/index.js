@@ -33,7 +33,8 @@ const routes = [
   {
     path: "/event-signup",
     name: "EventSignup",
-    component: EventSignup
+    component: EventSignup,
+    props: route => ({ query: route.query.id })
   },
   {
     path: "/callback",

@@ -38,16 +38,6 @@
             </ul>
           </li>
         </router-link>
-        <router-link
-          v-else
-          class="menu-item"
-          to="/login"
-          v-slot="{ href, route, navigate, isExactActive }"
-        >
-          <li :class="[isExactActive && 'active']">
-            <a :href="href" @click="navigate">Login/Register</a>
-          </li>
-        </router-link>
       </ul>
     </div>
   </nav>
@@ -67,4 +57,7 @@ export default {
 <style lang="sass">
 #flexmenu
   margin: 0 auto
+  .menu-item
+    padding-left: 30px !important
+    padding-right: 30px !important
 </style>
