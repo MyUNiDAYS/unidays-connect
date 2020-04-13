@@ -35,7 +35,7 @@ export default {
   methods: {
     ...mapMutations(["setSignupEventId"]),
     redirect() {
-      this.setSignupEventId(this.query);
+      this.setSignupEventId(this.query || 1);
       this.isRedirecting = true;
       this.$auth.redirect();
     }

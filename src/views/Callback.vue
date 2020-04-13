@@ -1,5 +1,5 @@
 <template>
-  <Loader loaderText="Getting yout info" />
+  <Loader loaderText="Getting your info" />
 </template>
 <script>
 import Loader from "@/components/Loader";
@@ -8,26 +8,20 @@ export default {
   components: {
     Loader
   },
-  computed: {
-    ...mapGetters(["accessToken"])
-  },
+  computed: mapGetters(["authorization"]),
   watch: {
-    accessToken: function() {
+    authorization: function() {
       this.login().then(() => this.$router.push({ name: "CompleteSignup" }));
     }
   },
   methods: {
-    redirect() {
-      this.$auth.redirect();
-    },
     ...mapActions(["login"]),
-    ...mapMutations(["setAccessToken"])
+    ...mapMutations(["setAccessTokenResponse"])
   },
-  async mounted() {
+  mounted() {
     if (this.$route.query.code) {
       this.isLoading = true;
-      this.$auth.handleCodeAndAuthorization();
-      this.$auth.closures = this.$auth.closures(this.setAccessToken);
+      this.$auth.handleCodeAndAuthorization(this.setAccessTokenResponse);
     }
   }
 };

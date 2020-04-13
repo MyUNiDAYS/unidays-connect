@@ -20,12 +20,13 @@ export default new Vuex.Store({
         // }
       }
     },
-    accessToken: undefined
+    accessTokenResponse: {}
   },
   getters: {
     isLoggedIn: state => state.user.isLoggedIn,
     userInfo: state => state.user.userInfo,
-    accessToken: state => state.accessToken || localStorage.accessToken,
+    authorization: state =>
+      `${state.accessTokenResponse.tokenType} ${state.accessTokenResponse.accessToken}`,
     eventData: () => eventData,
     signupEventId: () => localStorage.signupEventId
   },
@@ -37,11 +38,10 @@ export default new Vuex.Store({
     logout(state) {
       state.user.isLoggedIn = false;
       state.user.userInfo = {};
-      state.accessToken = undefined;
-      localStorage.accessToken = "";
+      state.accessTokenResponse = {};
     },
-    setAccessToken(state, token) {
-      state.accessToken = token;
+    setAccessTokenResponse(state, response) {
+      state.accessTokenResponse = response;
     },
     setSignupEventId(state, id) {
       localStorage.setItem("signupEventId", id);
@@ -49,16 +49,18 @@ export default new Vuex.Store({
   },
   actions: {
     login({ commit, getters }) {
-      return fetch(process.env.VUE_APP_ENV_USERINFO_ENDPOINT, {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + getters.accessToken
+      return fetch(
+        `${process.env.VUE_APP_ENV_SERVICE_ENDPOINT}/oauth/userinfo`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: getters.authorization
+          }
         }
-      })
+      )
         .then(response => response.json())
         .then(userInfo => commit("login", userInfo))
         .catch(error => console.log("ui err", error));
     }
   }
 });
-//martin.kovac+1586044613236@myunidays.com heslo1234

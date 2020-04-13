@@ -46,7 +46,7 @@
               <div class="upcoming_event_content_right">
                 <div class="power_button_group">
                   <router-link
-                    :to="{ name: 'EventSignup' }"
+                    :to="{ name: 'EventSignup', query: { id: 1 } }"
                     class="power_button effect_1"
                   >
                     <span class="button_value">Register Now!</span>

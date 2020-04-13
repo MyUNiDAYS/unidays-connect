@@ -1,126 +1,90 @@
 /*eslint no-unused-vars: "off"*/
-import { BasicQueryStringUtils } from "./utils";
 import Vue from "vue";
 import {
   AuthorizationServiceConfiguration,
   AuthorizationRequest,
   AuthorizationNotifier,
-  RedirectRequestHandler,
   BaseTokenRequestHandler,
-  TokenRequest,
-  GRANT_TYPE_AUTHORIZATION_CODE,
   FetchRequestor,
-  LocalStorageBackend
+  LocalStorageBackend,
+  RedirectRequestHandler,
+  TokenRequest,
+  GRANT_TYPE_AUTHORIZATION_CODE
 } from "@openid/appauth";
+import { QueryStringUtils } from "./utils";
 
 const auth_app = new Vue({
   data: {
-    error: undefined,
     serviceConfig: new AuthorizationServiceConfiguration({
-      authorization_endpoint: process.env.VUE_APP_ENV_AUTH_ENDPOINT,
-      token_endpoint: process.env.VUE_APP_ENV_TOKEN_ENDPOINT
+      authorization_endpoint: `${process.env.VUE_APP_ENV_SERVICE_ENDPOINT}/oauth/authorize`,
+      token_endpoint: `${process.env.VUE_APP_ENV_SERVICE_ENDPOINT}/oauth/token`
     }),
     config: {
-      client_id: process.env.VUE_APP_ENV_CLIENT_ID,
-      redirect_uri: process.env.VUE_APP_ENV_REDIRECT_URI,
-      scope: process.env.VUE_APP_ENV_SCOPE,
-      state: undefined
+      client_id: process.env.VUE_APP_ENV_SERVICE_CLIENT_ID,
+      redirect_uri: `${location.protocol}//${location.host}/oauth/callback`
     },
     notifier: new AuthorizationNotifier(),
     authorizationHandler: new RedirectRequestHandler(
       new LocalStorageBackend(),
-      new BasicQueryStringUtils()
+      new QueryStringUtils()
     ),
-    tokenHandler: new BaseTokenRequestHandler(new FetchRequestor()),
-    accessToken: undefined,
-    closures: function(mutationFunction) {
-      console.log("received fun", mutationFunction);
-      return function(token) {
-        console.log("received token", token);
-        return mutationFunction(token);
-      };
-    }
+    tokenHandler: new BaseTokenRequestHandler(new FetchRequestor())
   },
   methods: {
     redirect() {
+      const request = new AuthorizationRequest({
+        response_type: AuthorizationRequest.RESPONSE_TYPE_CODE,
+        client_id: this.config.client_id,
+        redirect_uri: this.config.redirect_uri,
+        scope: "openid name email verification",
+        extras: { prompt: "consent" }
+      });
       this.authorizationHandler.performAuthorizationRequest(
         this.serviceConfig,
-        this.request
+        request
       );
     },
-    handleCodeAndAuthorization() {
-      return this.authorizationHandler.completeAuthorizationRequestIfPossible();
-    },
-    getToken() {
-      return window.localStorage.accessToken;
-    },
-    saveToken(token) {
-      window.localStorage.accessToken = token.accessToken;
-    },
-    removeToken() {
-      this.isAuthenticatedSubject.next(false);
-      window.localStorage.removeItem("accessToken");
-    },
-    getUserInfo() {
-      return fetch(this.serviceConfig.userInfoEndpoint, {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + this.accessToken
+    handleCodeAndAuthorization(callback) {
+      this.notifier.setAuthorizationListener((request, response, error) => {
+        console.log(
+          "Authorization request complete ",
+          request,
+          response,
+          error
+        );
+        if (response) {
+          console.log(`Authorization Code: ${response.code}`);
+
+          if (!request && !request.internal) {
+            console.log("Error: Could not authorize access");
+            return;
+          }
+          const tokenRequest = new TokenRequest({
+            client_id: this.config.client_id,
+            redirect_uri: this.config.redirect_uri,
+            grant_type: GRANT_TYPE_AUTHORIZATION_CODE,
+            code: response.code,
+            extras: {
+              code_verifier: request.internal.code_verifier
+            }
+          });
+
+          this.tokenHandler
+            .performTokenRequest(this.serviceConfig, tokenRequest)
+            .then(resp => {
+              console.log(`Access Token: ${resp.accessToken}`);
+              callback(resp);
+            })
+            .catch(error => {
+              console.log("Error", error);
+            });
         }
-      })
-        .then(response => response.json())
-        .catch(error => console.log("ui err", error));
+      });
+      return this.authorizationHandler.completeAuthorizationRequestIfPossible();
     }
   },
   created: function() {
-    const vm = this;
-    vm.request = new AuthorizationRequest({
-      response_type: AuthorizationRequest.RESPONSE_TYPE_CODE,
-      client_id: vm.config.client_id,
-      redirect_uri: vm.config.redirect_uri,
-      scope: vm.config.scope,
-      state: undefined,
-      extras: { prompt: "consent", access_type: "offline" }
-    });
-
-    vm.authorizationHandler.setAuthorizationNotifier(vm.notifier);
-    vm.notifier.setAuthorizationListener((request, response, error) => {
-      console.log("Authorization request complete ", request, response, error);
-      if (response) {
-        vm.request = request;
-        vm.response = response;
-        const code = response.code;
-        console.log(`Authorization Code  ${response.code}`);
-
-        let extras;
-        if (vm.request && vm.request.internal) {
-          extras = {};
-          extras.code_verifier = vm.request.internal.code_verifier;
-        }
-        const tokenRequest = new TokenRequest({
-          client_id: vm.config.client_id,
-          redirect_uri: vm.config.redirect_uri,
-          grant_type: GRANT_TYPE_AUTHORIZATION_CODE,
-          code,
-          refresh_token: undefined,
-          extras
-        });
-
-        vm.accessTokenPromise = vm.tokenHandler
-          .performTokenRequest(vm.serviceConfig, tokenRequest)
-          .then(resp => {
-            console.log("have token", resp);
-            vm.accessToken = resp.accessToken;
-            vm.saveToken(resp);
-
-            this.closures = this.closures(resp.accessToken);
-          })
-          .catch(oError => {
-            vm.error = oError;
-            console.log("error", oError);
-          });
-      }
-    });
+    this.authorizationHandler.setAuthorizationNotifier(this.notifier);
   }
 });
 

@@ -12,11 +12,9 @@
  * express or implied. See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export class BasicQueryStringUtils {
-  parse(input) {
-    return this.parseQueryString(input.search);
-  }
-  parseQueryString(query) {
+export class QueryStringUtils {
+  parse = input => this.parseQueryString(input.search);
+  parseQueryString = query => {
     let result = {};
     // if anything starts with ?, # or & remove it
     query = query.trim().replace(/^(\?|#|&)/, "");
@@ -33,8 +31,8 @@ export class BasicQueryStringUtils {
       }
     }
     return result;
-  }
-  stringify(input) {
+  };
+  stringify = input => {
     let encoded = [];
     for (let key in input) {
       if (input.hasOwnProperty(key) && input[key]) {
@@ -44,5 +42,5 @@ export class BasicQueryStringUtils {
       }
     }
     return encoded.join("&");
-  }
+  };
 }
