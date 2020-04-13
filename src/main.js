@@ -4,8 +4,8 @@ import router from "./router";
 import store from "./store";
 import authApp from "./app-auth";
 
+import "ionicons";
 import "./assets/scss/style.scss";
-
 Vue.config.productionTip = false;
 Vue.use(authApp);
 

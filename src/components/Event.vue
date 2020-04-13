@@ -66,7 +66,7 @@ export default {
   props: ["eventDetails"],
   methods: {
     getImgUrl(img) {
-      return "@/assets/images/causes/" + img;
+      return "/images/" + img;
     }
   }
 };

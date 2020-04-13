@@ -13,7 +13,11 @@
           <div class="power_events">
             <div class="power_events_wrapper">
               <div class="power_events_image">
-                <img class="primary_img" src="@/assets/images/events/1.jpg" alt="" />
+                <img
+                  class="primary_img"
+                  src="@/assets/images/events/1.jpg"
+                  alt=""
+                />
                 <div class="power_events_date">
                   <span class="day">04</span><span class="month">May</span>
                 </div>
@@ -40,7 +44,11 @@
           <div class="power_events">
             <div class="power_events_wrapper">
               <div class="power_events_image">
-                <img class="primary_img" src="@/assets/images/events/2.jpg" alt="" />
+                <img
+                  class="primary_img"
+                  src="@/assets/images/events/2.jpg"
+                  alt=""
+                />
                 <div class="power_events_date">
                   <span class="day">02</span><span class="month">May</span>
                 </div>
