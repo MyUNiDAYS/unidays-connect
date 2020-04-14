@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  aws-s3: circleci/aws-s3@1.0.15
+
+jobs:
+  publish-icons:
+    docker:
+      - image: circleci/python:3
+    steps:
+      - checkout
+      - aws-s3/sync:
+          from: ./icons/
+          to: s3://$CDN_BUCKET_NAME/assets/buttons/
+          arguments: |
+            --acl bucket-owner-full-control
+
+workflows:
+  version: 2
+  pushed-to-master:
+    jobs:
+      - publish-icons:
+          context: cdn-publisher
+          filters:
+            branches:
+              only: master
