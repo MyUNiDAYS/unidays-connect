@@ -1,0 +1,249 @@
+.donate_now {
+    .power_heading_wrapper {
+        @include bordered-bottom(1px, dashed, #ececec);
+        padding-bottom: 20px;
+    }
+    .power_heading_wrapper p {
+        font-family: $heading-font;
+        font-size: $font-16;
+        font-weight: $font-semibold;
+        color: $primary-color;
+        margin: 0px 0px 0px 0px;
+    }
+}
+/* Forms (donation_form) */
+.donation_form {
+    .to_donation{
+        .donation_amount_tab{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: $font-14;
+            line-height: 20px;
+            font-weight: $font-medium;
+            color: $primary-color;
+        }
+        .select_currency_box{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fef9fa;
+            border-radius: 5px;
+            @include bordered(1px, solid, #f6c0cb);
+            margin-bottom: 25px;
+            overflow: hidden;
+            .select_amount {
+                border-radius: 0px;
+                @include bordered(0px, solid, #f6c0cb);
+                @include bordered-left(1px, solid, #f6c0cb);
+            
+            }
+        }
+        .currency_dropdown{
+            width: 45px;
+        }
+        .currency{
+            padding: 9px 10px 9px 10px;
+            @include bordered-left(1px, solid, #f6c0cb);
+        }
+        .select_amount_box{
+            display: block;
+            align-items: center;
+            font-size: $font-14;
+            padding: 0px 0px;
+            overflow: hidden;
+        }
+        .selectdonate{
+            @include bordered-right(1px, solid, #f6c0cb);
+            padding: 10px 10px 10px 10px;
+        }
+        .select_amount{
+            width: 100%;
+            height: 50px;
+            border-radius: 5px;
+            @include bordered(1px, solid, #f6c0cb);
+            color: $primary-color;
+            background: #fef9fa;
+            font-weight: $font-medium;
+            outline: 0px;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+            padding: 0px 20px;
+            
+        }
+        .select_amount.custom{            
+            text-align: left;
+        }
+        .select_amount.active:not(.custom){
+            color: $white-color;
+            background: $primary-color;
+            text-align: center;
+        }
+        button.select_amount:focus{
+            outline: 0px;
+        }
+        .dot{
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: $primary-color;
+            border-radius: 100%;
+            margin-right: 10px;
+        }
+        .select_amount.active .dot{
+            background: $white-color;
+        }
+        .select_amount input[type=text] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            @include bordered(0px, solid, #f6c0cb);
+            border-radius: 0px;
+            background: $white-color;
+            color: $primary-color;
+            font-weight: $font-medium;
+            padding: 10px;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .select_amount input[type=text]:focus{
+            outline: 0px;
+        }
+        .select_amount.custom.active input[type=text]{
+            opacity: 1;
+            visibility: visible;
+            background: #fff;
+        }
+    }
+    
+        
+    .select2-container--default .select2-selection--single .select2-selection__arrow,
+    .select2-container .select2-selection--single,
+    .select2-container--default .select2-selection--single .select2-selection__arrow{
+        height: 50px;
+        padding: 0px 10px;
+        border: none;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__rendered,
+    .select2-container .select2-selection--single .select2-selection__rendered{
+        padding: 0px;
+        line-height: 52px;
+    }
+    .as_guest h5{
+        font-weight: $font-semibold;
+        color: $primary-color;
+        span{
+            padding: 0px 20px;
+        }
+        a{
+            background: $primary-color;
+            color:$white-color;
+            font-size: $font-12;
+            font-weight: $font-medium;
+            padding: 12px 24px;
+            display: inline-block;
+        }
+    }
+    label{
+        display: block;
+        font-family: $heading-font;
+        font-size: $font-14;
+        font-weight: $font-semibold;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+    .form-group{
+        margin-top: 10px;
+        margin-bottom: 15px;
+        display: inline-block;
+        width: 100%;
+    }
+    .form-control:focus {
+        color: #495057;
+        background-color:#fff;
+        border-color: $primary-color;
+        outline: 0;
+        box-shadow: none;
+    }
+    
+    .select2-container--default .select2-selection--multiple,
+    .select2-container--default .select2-selection--single{
+        display: block;
+        width: 100%;
+        height: 50px;
+        padding: 0px 15px;
+        font-size: $font-14;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fef9fa;
+        background-clip: padding-box;
+        @include bordered(1px, solid, #f6c0cb);
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        -webkit-backface-visibility: hidden;
+        box-sizing: border-box;
+        outline: none;
+        -webkit-appearance: none;
+        outline-offset: 0;
+    }
+    .select_currency_box .select2-container--default .select2-selection--single{
+        border: 0px solid #f6c0cb;
+    }
+    .select2-container--default .select2-selection--multiple:focus,
+    .select2-container--default .select2-selection--single:focus,
+    .select2-container--default.select2-container--focus .select2-selection--multiple,
+    .select2-container--default.select2-container--focus .select2-selection--single {
+        border-color: $primary-color;;
+        outline: none;
+        outline-offset: 0px;
+    }
+    
+    .power_button_group{
+        text-align: left;
+        margin: 40px 0px 0px 0px;
+        display: flex;
+        align-items: center;
+    }
+    .power_button {
+        background: $primary-color;
+        box-shadow: 0px 2px 13px rgba($primary-color, 0.5);
+        &:hover{
+            background: $white-color;
+            color: $primary-color;
+        }
+    }
+    .form-group.typedonate{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 50px;
+        .select2-container{
+            width: 170px!important;
+        }
+    }
+    .payment_getway{
+        margin-left: 80px;
+        a{
+            margin: 0px 10px;
+            &:first-child{
+                margin-left: 0px;
+            }
+            &:last-child{
+                margin-right: 0px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-desktop){
+    .donation_form{
+        margin-bottom: 40px;
+    }
+}

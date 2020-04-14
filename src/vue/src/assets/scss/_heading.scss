@@ -1,0 +1,57 @@
+/*-- Heading --*/
+.power_heading_wrapper{
+    position: relative;
+    margin: 0px 0px 40px 0px;
+    padding: 0px 0px 0px 0px;
+}
+.power_heading_wrapper > * {
+    position: relative;
+}
+.power_heading_wrapper.text-left{
+    text-align: left;
+}
+.power_heading_wrapper.text-center{
+    text-align: center;
+}
+.power_heading_wrapper.text-right{
+    text-align: right;
+} 
+.power_heading_wrapper h1{
+    line-height: 54px;
+    font-weight: $font-bold;
+    color: $black-color;
+    margin: 0px 0px 15px 0px;
+    padding: 0px 0px 0px 0px;
+}
+.power_heading_wrapper p{
+    font-weight: $font-regular;
+    color: $black-color;
+    margin: 40px 0px 40px 0px;
+    padding: 0px 0px 0px 0px;
+}
+.power_title_line{
+    width: 60px;
+    height: 2px;
+    background: $primary-color;
+    margin: 0 auto;
+}
+
+.power_title_line.second{
+    background: $second-color;
+}
+
+.power_title_line.third{
+    background: $third-color;
+}
+
+.power_title_line.fourth{
+    background: $fourth-color;
+}
+
+.power_title_line.fifth{
+    background: $fifth-color;
+}
+
+.power_title_line.sixth{
+    background: $sixth-color;
+}

@@ -1,0 +1,5 @@
+.animated{
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 8s;
+}

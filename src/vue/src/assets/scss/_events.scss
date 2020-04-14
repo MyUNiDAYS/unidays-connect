@@ -1,0 +1,534 @@
+.power_events{
+    position: relative;
+    background: $white-color;
+    box-shadow: 0px 0px 13px rgba($primary-color, 0.07);
+    margin: 0px 0px 15px 0px;
+    text-align: left;
+    .power_events_image{
+        position: relative;
+        img{
+            width: 100%;
+        }
+    }
+    .power_events_date{
+        display: inline-block;
+        width: 65px;
+        height: 65px;
+        font-family: $heading-font;
+        text-align: center;
+        color: $white-color;
+        background: $primary-color;
+        border-radius: 100%;
+        position: absolute;
+        right: 30px;
+        bottom: -30px;
+        @include bordered(3px, solid, $white-color);
+        padding-top: 10px;
+        .day{
+            display: block;
+            font-size: $font-18;
+            font-weight: $font-semibold;
+            line-height: 18px;
+        }
+        .month{
+            display: block;
+            font-size: $font-12;
+            font-weight: $font-regular;
+            line-height: 20px;
+        }
+    }
+    .power_events_content {
+        padding: 35px 30px;
+        h3{
+            position: relative;
+            line-height: 30px;
+            margin-bottom: 25px;
+            @include transition(color 0.5s, background-color 0.8s);
+            a{
+                color: $black-color;
+            }
+        }
+        p{
+            color: $black-color;
+            line-height: 30px;
+        }
+    }
+    &:hover .power_events_content h3 a{
+        color: $primary-color;
+    }
+    .power_events_bottom{
+        font-family: $heading-font;
+        font-size: $font-12;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        a{
+            background: $white-color;
+            color: $primary-color;
+            display: inline-block;
+            font-weight: $font-medium;
+            line-height: 22px;
+            text-transform: uppercase;
+            padding: 0px 15px;
+            @include bordered(1px, solid, $primary-color);
+            &:hover{
+                background: $primary-color;
+                color: $white-color;
+            }
+        }
+        span{
+            padding-left: 15px;
+            color: $primary-color;
+            font-weight: $font-medium;
+        }
+    }  
+    .power_events_location{
+        font-size: $font-12;
+        font-weight: $font-semibold;
+        i{
+            font-size: 16px;
+            color: $primary-color;
+        }
+    }
+
+    &.second{
+        .power_events_date{
+            background: $second-color;
+        }
+        &:hover .power_events_content h3 a{
+            color: $second-color;
+        }
+        .power_events_bottom{
+            a{
+                color: $second-color;
+                @include bordered(1px, solid, $second-color);
+                &:hover{
+                    background: $second-color;
+                    color: $white-color;
+                }
+            }
+            span{
+                color: $second-color;
+            }
+        }  
+        .power_events_location{
+            i{
+                color: $second-color;
+            }
+        }
+    }
+
+    &.third{
+        .power_events_date{
+            background: $third-color;
+        }
+        &:hover .power_events_content h3 a{
+            color: $third-color;
+        }
+        .power_events_bottom{
+            a{
+                color: $third-color;
+                @include bordered(1px, solid, $third-color);
+                &:hover{
+                    background: $third-color;
+                    color: $white-color;
+                }
+            }
+            span{
+                color: $third-color;
+            }
+        }  
+        .power_events_location{
+            i{
+                color: $third-color;
+            }
+        }
+    }
+
+    &.fourth{
+        .power_events_date{
+            background: $fourth-color;
+        }
+        &:hover .power_events_content h3 a{
+            color: $fourth-color;
+        }
+        .power_events_bottom{
+            a{
+                color: $fourth-color;
+                @include bordered(1px, solid, $fourth-color);
+                &:hover{
+                    background: $fourth-color;
+                    color: $white-color;
+                }
+            }
+            span{
+                color: $fourth-color;
+            }
+        }  
+        .power_events_location{
+            i{
+                color: $fourth-color;
+            }
+        }
+    }
+
+    &.fifth{
+        .power_events_date{
+            background: $fifth-color;
+        }
+        &:hover .power_events_content h3 a{
+            color: $fifth-color;
+        }
+        .power_events_bottom{
+            a{
+                color: $fifth-color;
+                @include bordered(1px, solid, $fifth-color);
+                &:hover{
+                    background: $fifth-color;
+                    color: $white-color;
+                }
+            }
+            span{
+                color: $fifth-color;
+            }
+        }  
+        .power_events_location{
+            i{
+                color: $fifth-color;
+            }
+        }
+    }
+
+    &.sixth{
+        .power_events_date{
+            background: $sixth-color;
+        }
+        &:hover .power_events_content h3 a{
+            color: $sixth-color;
+        }
+        .power_events_bottom{
+            a{
+                color: $sixth-color;
+                @include bordered(1px, solid, $sixth-color);
+                &:hover{
+                    background: $sixth-color;
+                    color: $white-color;
+                }
+            }
+            span{
+                color: $sixth-color;
+            }
+        }  
+        .power_events_location{
+            i{
+                color: $sixth-color;
+            }
+        }
+    }
+}
+
+
+
+
+.power_events_list{
+    position: relative;
+    background: $white-color;
+    margin: 0px 0px 40px 0px;
+    text-align: left;
+    &:last-child{
+        margin-bottom: 0px;
+    }
+    .power_events_list_wrapper{
+        display: flex;
+        align-items: center;
+        .power_events_list_image{
+            position: relative;
+            min-width: 145px;
+            width: 145px;
+            margin-right: 20px;
+        }
+        .power_events_list_content {
+            h6{
+                position: relative;
+                line-height: 24px;
+                margin-bottom: 5px;
+                @include transition(color 0.5s, background-color 0.8s);
+                a{
+                    color: $black-color;
+                }
+            }
+            .power_events_list_date{
+                color: $primary-color;
+                font-size: $font-14;
+                font-weight: $font-medium;
+                line-height: 26px;
+            }
+            p{
+                color: $black-color;
+                line-height: 30px;
+            }
+            img{
+                width: auto;
+            }
+        }
+        &:hover .power_events_list_content h6 a{
+            color: $primary-color;
+        }
+    }
+
+    &.second{
+        .power_events_list_wrapper{
+            .power_events_list_content {
+                .power_events_list_date{
+                    color: $second-color;
+                }
+            }
+            &:hover .power_events_list_content h6 a{
+                color: $second-color;
+            }
+        }
+    }
+
+    &.third{
+        .power_events_list_wrapper{
+            .power_events_list_content {
+                .power_events_list_date{
+                    color: $third-color;
+                }
+            }
+            &:hover .power_events_list_content h6 a{
+                color: $third-color;
+            }
+        }
+    }
+
+    &.fourth{
+        .power_events_list_wrapper{
+            .power_events_list_content {
+                .power_events_list_date{
+                    color: $fourth-color;
+                }
+            }
+            &:hover .power_events_list_content h6 a{
+                color: $fourth-color;
+            }
+        }
+    }
+
+    &.fifth{
+        .power_events_list_wrapper{
+            .power_events_list_content {
+                .power_events_list_date{
+                    color: $fifth-color;
+                }
+            }
+            &:hover .power_events_list_content h6 a{
+                color: $fifth-color;
+            }
+        }
+    }
+
+    &.sixth{
+        .power_events_list_wrapper{
+            .power_events_list_content {
+                .power_events_list_date{
+                    color: $sixth-color;
+                }
+            }
+            &:hover .power_events_list_content h6 a{
+                color: $sixth-color;
+            }
+        }
+    }
+}
+
+
+
+.upcoming_event{
+    position: relative;
+    background: $white-color;
+    box-shadow: 0px 0px 13px rgba($primary-color, 0.07);
+    margin: 0px 0px 60px 0px;
+    text-align: left;
+    .upcoming_event_image{
+        position: relative;
+        img{
+            width: 100%;
+        }
+    }
+    .upcoming_event_content{
+        background: #333333;
+        .upcoming_event_content_inner {
+            padding: 37px 0px 60px 0px;
+            display: flex;
+            justify-content: space-between;
+            .highlight_tag{
+                font-family: $heading-font;
+                font-size: $font-12;
+                font-weight: $font-medium;
+                text-transform: uppercase;
+                letter-spacing: 4px;
+                color: $third-color;
+            }
+            h3{
+                position: relative;
+                line-height: 36px;
+                margin-top: 15px;
+                margin-bottom: 25px;
+                @include transition(color 0.5s, background-color 0.8s);
+                a{
+                    color: $white-color;
+                    &:hover{
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+    .upcoming_event_location{
+        font-size: $font-12;
+        font-weight: $font-semibold;
+        color: $white-color;
+        i{
+            font-size: 16px;
+            color: $primary-color;
+        }
+    }
+    .upcoming_event_content_right{
+        .power_button{
+            padding: 13px 90px;
+            background: transparent;
+        }
+        p{
+            font-family: $heading-font;
+            font-size: $font-16;
+            line-height: 24px;
+            color: $white-color;
+            margin-top: 15px;
+            span{
+                color: $third-color;
+            }
+        }
+    }
+
+    #clockdiv{
+        display: flex;
+        background: $white-color;
+        border-radius: 15px;
+        padding: 28px 82px;
+        justify-content: space-around;
+        margin-top: -43px;
+        width: 100%;
+        > div{
+            position: relative;
+            font-family: $heading-font;
+            display: flex;
+            padding: 0px 20px;
+            min-width: 140px;
+            color: $primary-color;
+            &:after{
+                content: "";
+                position: absolute;
+                width: 1px;
+                height: 30px;
+                background: #ebebeb;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+            }
+            &:last-child:after{
+                display: none;
+            }
+            > span{
+                font-size: $font-36;
+            }
+            .smalltext{
+                position: relative;
+                font-family: $paragraph-font;
+                font-size: $font-12;
+                font-weight: $font-semibold;
+                text-transform: uppercase;
+                margin-left: 5px;
+                line-height: 12px;
+                &:after{
+                    content: "";
+                    position: absolute;
+                    width: 5px;
+                    height: 5px;
+                    background: $primary-color;
+                    left: 0;
+                    bottom: 3px;
+                }
+            }
+            &.first{
+                color: $primary-color;
+                .smalltext:after{
+                    background: $primary-color;
+                }
+            }
+            &.second{
+                color: $second-color;
+                .smalltext:after{
+                    background: $second-color;
+                }
+            }
+            &.third{
+                color: $third-color;
+                .smalltext:after{
+                    background: $third-color;
+                }
+            }
+            &.fourth{
+                color: $fourth-color;
+                .smalltext:after{
+                    background: $fourth-color;
+                }
+            }
+            &.fifth{
+                color: $fifth-color;
+                .smalltext:after{
+                    background: $fifth-color;
+                }
+            }
+            &.sixth{
+                color: $sixth-color;
+                .smalltext:after{
+                    background: $sixth-color;
+                }
+            }
+        }
+    }
+
+}
+    
+@media screen and (max-width: $breakpoint-desktop) {
+    .upcoming_event{
+        text-align: center;
+        .upcoming_event_content{
+            .upcoming_event_content_inner{
+                display: block;
+            }
+        }
+        .upcoming_event_content_right{
+            margin-top: 30px;
+            .power_button{
+                padding: 10px 50px;
+                font-size: 12px;
+            }
+        }
+        #clockdiv{
+            display: block;
+            position: relative;
+            left: 0;
+            transform: none;
+            border-radius: 0px;
+            > div{
+                justify-content: center;
+                padding: 15px 0px;
+                &:after{
+                    display: none;
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,333 @@
+.testimonials{
+    position: relative;
+    padding-bottom: 100px;
+}
+
+/*------- Testimonial -------*/
+.power_testimonialcarousel {
+    background: $primary-color;
+    padding: 40px 40px 60px 40px;
+}
+.power_testimonialcarousel.second{
+    background: $second-color;
+}
+
+.power_testimonialcarousel.third{
+    background: $third-color;
+}
+
+.power_testimonialcarousel.fourth{
+    background: $fourth-color;
+}
+
+.power_testimonialcarousel.fifth{
+    background: $fifth-color;
+}
+
+.power_testimonialcarousel.sixth{
+    background: $sixth-color;
+}
+
+.power_testimonial_carousel_item{
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+
+    .power_testimonial_carousel_reviewer_content{
+        position: relative;
+        background: transparent;
+        padding: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
+        border-radius: 0px 0px 0px 0px; /* px, % */
+    }
+    .power_testimonial_carousel_reviewer_details{
+        margin-top: 30px;
+    }
+    .power_testimonial_carousel_reviewer_image img{
+        width: auto;
+        height: auto;
+        border-radius: 100% 100% 100% 100%; /* px, % */
+        display: inline-block;
+    }
+    .power_testimonial_carousel_reviewer_name{
+        font-size: $font-18;
+        line-height: 38px;
+        font-weight: 700;
+        color: $white-color;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+    }
+    .power_testimonial_carousel_reviewer_company{
+        font-family: $paragraph-font;
+        font-size: 16px;
+        line-height: 32px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        color: $white-color;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+    }
+    .power_testimonial_carousel_reviewer_text{
+        position: relative;
+        z-index: 2;
+        font-family: $heading-font;
+        font-size: $font-18;
+        line-height: 34px;
+        font-weight: 300;
+        font-style: italic; 
+        letter-spacing: 0px;
+        color: $white-color;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+    }
+    .power_testimonial_carousel_reviewer_rating{
+        padding: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
+    }
+    .power_testimonial_carousel_reviewer_rating li{
+        display: inline-block;
+        font-size: 22px;
+        color: $primary-color;
+        margin: 0px 5px 0px 5px;
+        padding: 0px 0px 0px 0px;
+    }
+    .power_testimonial_carousel_reviewer_rating li:first-child{
+        margin-left: 0px;
+    }
+    .power_testimonial_carousel_reviewer_rating li:last-child{
+        margin-right: 0px;
+    }
+    .power_testimonial_carousel_reviewer_image {
+        position: relative;
+        z-index: 2;
+    }
+
+    &.second{
+        .power_testimonial_carousel_reviewer_company,
+        .power_testimonial_carousel_reviewer_rating li{
+            color: $second-color;
+        }
+    }
+    &.third{
+        .power_testimonial_carousel_reviewer_company,
+        .power_testimonial_carousel_reviewer_rating li{
+            color: $third-color;
+        }
+    }
+    &.fourth{
+        .power_testimonial_carousel_reviewer_company,
+        .power_testimonial_carousel_reviewer_rating li{
+            color: $fourth-color;
+        }
+    }
+    &.fifth{
+        .power_testimonial_carousel_reviewer_company,
+        .power_testimonial_carousel_reviewer_rating li{
+            color: $fifth-color;
+        }
+    }
+    &.sixth{
+        .power_testimonial_carousel_reviewer_company,
+        .power_testimonial_carousel_reviewer_rating li{
+            color: $sixth-color;
+        }
+    }
+}
+
+
+/*--- Aside Image Style---*/
+.power_testimonial_carousel_item.power_testimonial_carousel_reviewer_image_aside{
+    display: flex;
+}
+.power_testimonial_carousel_item.power_testimonial_carousel_reviewer_image_aside .power_testimonial_carousel_reviewer_meta_inner{
+    min-width: 80px;
+    max-width: 100px;
+}
+.power_testimonial_carousel_item.power_testimonial_carousel_reviewer_image_aside .power_testimonial_carousel_reviewer_content{
+    padding-left: 20px;
+}
+
+@media screen and (max-width: $breakpoint-tablet){
+    .power_testimonial_carousel_item.power_testimonial_carousel_reviewer_image_aside{
+        display: block;
+    }
+    .power_testimonial_carousel_item.power_testimonial_carousel_reviewer_image_aside .power_testimonial_carousel_reviewer_content{  
+        padding:{
+            top: 20px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+        }
+    }
+}
+
+.power_testimonialcarousel.testimonial_type2{
+    background: transparent;
+    padding: 0px;
+    .power_testimonial_carousel_item{
+        background: $white-color;
+        padding: 40px 40px 40px 40px;
+
+        .power_testimonial_carousel_reviewer_details{
+            margin-top: 15px;
+        }
+        .power_testimonial_carousel_reviewer_name{
+            color: $black-color;
+        }
+        .power_testimonial_carousel_reviewer_company{
+            color: $primary-color;
+            font-weight: $font-regular;
+            letter-spacing: 0px;
+        }
+        .power_testimonial_carousel_reviewer_text{
+            font-family: $paragraph-font;
+            font-size: $font-16;
+            line-height: 28px;
+            font-weight: $font-regular;
+            font-style: normal;
+            color: $black-color;
+        }
+        .power_testimonial_carousel_reviewer_rating{
+            margin-bottom: 25px;
+        }
+
+        &.second{
+            .power_testimonial_carousel_reviewer_company,
+            .power_testimonial_carousel_reviewer_rating li{
+                color: $second-color;
+            }
+        }
+        &.third{
+            .power_testimonial_carousel_reviewer_company,
+            .power_testimonial_carousel_reviewer_rating li{
+                color: $third-color;
+            }
+        }
+        &.fourth{
+            .power_testimonial_carousel_reviewer_company,
+            .power_testimonial_carousel_reviewer_rating li{
+                color: $fourth-color;
+            }
+        }
+        &.fifth{
+            .power_testimonial_carousel_reviewer_company,
+            .power_testimonial_carousel_reviewer_rating li{
+                color: $fifth-color;
+            }
+        }
+        &.sixth{
+            .power_testimonial_carousel_reviewer_company,
+            .power_testimonial_carousel_reviewer_rating li{
+                color: $sixth-color;
+            }
+        }
+    }
+
+    &.owl-carousel .owl-dots{
+        justify-content: center;
+        button.owl-dot span{
+            background: $primary-color;
+        }
+        button.owl-dot.active{
+            @include bordered (2px, solid, rgba($primary-color, 0.6));
+            span{
+                background: $primary-color;
+            }
+        }
+    }
+    
+}
+
+
+/*--------- power_carousel Carousel Navs --------*/
+.owl-carousel.power_testimonialcarousel.side_nav .owl-nav {
+    margin-top: 0px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: -1;
+    
+    .owl-prev{
+        float: left;
+        margin-left: -60px;
+    }
+    .owl-next{
+        float: right;
+        margin-right: -60px;
+    }
+}
+
+.owl-carousel.power_testimonialcarousel .owl-nav {
+    margin-top: 0px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translateY(0%);
+    width: 100%;
+    z-index: -1;
+
+    .owl-prev,
+    .owl-next{
+        float: none;
+        margin: 0px 10px;
+    }
+    button.owl-prev, 
+    button.owl-next {
+        background: transparent;
+        color: $primary-color;
+        border: none;
+        padding: 0 !important;
+        font: inherit;
+        width: 30px;
+        height: 30px;
+        line-height: 28px;
+        border-radius: 100%;
+        @include bordered(2px, solid, $primary-color);
+        outline: none;
+        @include transition(color 0.5s, background-color 0.8s);
+    }
+    button.owl-prev:hover, 
+    button.owl-next:hover {
+        background: $primary-color;
+        color: $white-color;
+    }
+}
+/*--------- power_carousel Carousel Dots --------*/
+.owl-carousel.power_testimonialcarousel .owl-dots {
+    position: relative;
+    text-align: center; 
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    button.owl-dot{
+        outline: none;
+        margin: 0px 10px;
+        border-radius: 100%;
+        @include transition(color 0.5s, background-color 0.8s);
+        @include bordered (2px, solid, transparent);
+        &.active{
+            @include bordered (2px, solid, rgba($white-color, 0.6));
+        }     
+        span{
+            background: $white-color;
+            outline: none;
+            width: 10px;
+            height: 10px;
+            display: block;
+            border-radius: 100%;
+            @include transition(color 0.5s, background-color 0.8s);
+        }
+        &.active span{
+            background: $white-color;
+            @include transition(color 0.5s, background-color 0.8s);
+        }
+    }
+}

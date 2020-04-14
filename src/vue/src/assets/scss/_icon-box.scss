@@ -1,0 +1,361 @@
+.power_iconbox{
+    position: relative;
+    background: $white-color;
+    display: flex;
+    align-items: center;
+    padding: 35px 35px;
+    @include transition(all 0.5s ease);
+    h5{
+        font-size: $font-18;
+        margin-top: 8px;
+        margin-bottom: 0px;
+        @include transition(all 0.5s ease);
+    }
+    p{
+        color: #62809a;
+        @include transition(all 0.5s ease);
+    }
+    &:hover{
+        background: $primary-color;
+        color: $white-color;
+        @include transition(all 0.5s ease);
+        h5, p{
+            color: $white-color;
+        }
+    }
+    .power_iconbox_icon{
+        position: relative;
+        min-width: 50px;
+        margin-right: 20px;
+    }
+    img{
+        width: auto;
+        @include transition(all 0.5s ease);
+    }
+    img.secondary_img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+    &:hover img.primary_img{
+        opacity: 0;
+        visibility: hidden;
+    }
+    &:hover img.secondary_img{
+        opacity: 1;
+        visibility: visible;
+    }
+    &.first{
+        background: $primary-color;
+        color: $white-color;
+        p{
+            color: $white-color;
+        }
+    }
+
+    &.second{
+        background: $second-color;
+        color: $white-color;
+        p{
+            color: $white-color;
+        }
+    }
+
+    &.third{
+        background: $third-color;
+        color: $white-color;
+        p{
+            color: $white-color;
+        }
+    }
+    
+    &.fourth{
+        background: $fourth-color;
+        color: $white-color;
+        p{
+            color: $white-color;
+        }
+    }
+
+    &.fifth{
+        background: $fifth-color;
+        color: $white-color;
+        p{
+            color: $white-color;
+        }
+    }
+
+    &.sixth{
+        background: $sixth-color;
+        color: $white-color;
+        p{
+            color: $white-color;
+        }
+    }
+    &.type_2{
+        display: block;
+        background: #fcfbfc;
+        padding: 30px 30px;
+        > div{
+            position: relative;
+            z-index: 1;
+        }
+        &:after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $primary-color;
+            @include transition(all 0.5s ease);
+        }
+        h5{
+            font-size: $font-20;
+            color: $primary-color;
+            line-height: 34px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+        p{
+            color: $black-color;
+            line-height: 28px;
+        }
+        &:hover{
+            color: $white-color;
+            h5, p{
+                color: $white-color;
+            }
+            &:after{
+                height: 100%;
+            }
+        }
+        
+        &.first{
+            h5{
+                color: $primary-color;
+            }
+            &:after{
+                background-color: $primary-color;
+            }
+            &:hover{
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+                &:after{
+                    background-color: $primary-color;
+                }
+            }
+        }
+
+        &.second{
+            h5{
+                color: $second-color;
+            }
+            &:after{
+                background-color: $second-color;
+            }
+            &:hover{
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+                &:after{
+                    background-color: $second-color;
+                }
+            }
+        }
+
+        &.third{
+            h5{
+                color: $third-color;
+            }
+            &:after{
+                background-color: $third-color;
+            }
+            &:hover{
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+                &:after{
+                    background-color: $third-color;
+                }
+            }
+        }
+
+        &.fourth{
+            h5{
+                color: $fourth-color;
+            }
+            &:after{
+                background-color: $fourth-color;
+            }
+            &:hover{
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+                &:after{
+                    background-color: $fourth-color;
+                }
+            }
+        }
+
+        &.fifth{
+            h5{
+                color: $fifth-color;
+            }
+            &:after{
+                background-color: $fifth-color;
+            }
+            &:hover{
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+                &:after{
+                    background-color: $fifth-color;
+                }
+            }
+        }
+
+        &.sixth{
+            h5{
+                color: $sixth-color;
+            }
+            &:after{
+                background-color: $sixth-color;
+            }
+            &:hover{
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+                &:after{
+                    background-color: $sixth-color;
+                }
+            }
+        }
+        
+    }
+
+    &.type_3{
+        display: block;
+        padding: 0px 0px;
+        background: transparent;
+        &:last-child{
+            margin-bottom: 0px;
+        }
+        h5{
+            font-size: $font-24;
+            line-height: 34px;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+        p{
+            color: $black-color;
+            line-height: 28px;
+        }
+        &:hover{
+            background: transparent;
+            h5, p{
+                color: $black-color;
+            }
+        }
+        
+        &.first{
+            @include bordered-bottom(2px, solid, $primary-color);
+            h5{
+                color: $primary-color;
+            }
+            &:hover{
+                background: $primary-color;
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+            }
+        }
+
+        &.second{
+            @include bordered-bottom(2px, solid, $second-color);
+            h5{
+                color: $second-color;
+            }
+            &:hover{
+                background: $second-color;
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+            }
+        }
+
+        &.third{
+            @include bordered-bottom(2px, solid, $third-color);
+            h5{
+                color: $third-color;
+            }
+            &:hover{
+                background: $third-color;
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+            }
+        }
+
+        &.fourth{
+            @include bordered-bottom(2px, solid, $fourth-color);
+            h5{
+                color: $fourth-color;
+            }
+            &:hover{
+                background: $fourth-color;
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+            }
+        }
+
+        &.fifth{
+            @include bordered-bottom(2px, solid, $fifth-color);
+            h5{
+                color: $fifth-color;
+            }
+            &:hover{
+                background: $fifth-color;
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+            }
+        }
+
+        &.sixth{
+            @include bordered-bottom(2px, solid, $sixth-color);
+            h5{
+                color: $sixth-color;
+            }
+            &:hover{
+                background: $sixth-color;
+                color: $white-color;
+                h5, p{
+                    color: $white-color;
+                }
+            }
+        }
+        
+    }
+}
+
+@media screen and (max-width: $breakpoint-desktop) {
+    .power_iconbox{
+        margin-bottom: 30px;
+    }
+}
