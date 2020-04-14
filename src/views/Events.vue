@@ -9,7 +9,7 @@
           <h1 class="power_title ">Upcoming Event</h1>
           <div class="power_title_line"></div>
         </div>
-        <EventHero />
+        <EventHero :eventData="heroEvent" />
       </div>
       <div class="section causes bg_color_1">
         <div class="container">
@@ -22,7 +22,7 @@
           </div>
           <div class="row">
             <Event
-              v-for="event in eventData"
+              v-for="event in otherEvents"
               :key="event.id"
               :eventDetails="event"
             />
@@ -42,7 +42,13 @@ export default {
     EventHero
   },
   computed: {
-    ...mapGetters(["eventData"])
+    ...mapGetters(["eventData"]),
+    heroEvent: function() {
+      return this.eventData.find(e => e.id == 1);
+    },
+    otherEvents: function() {
+      return this.eventData.filter(e => e.id != 1);
+    }
   },
   methods: {
     getImgUrl(img) {

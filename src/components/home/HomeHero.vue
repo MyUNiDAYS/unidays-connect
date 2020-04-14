@@ -19,7 +19,8 @@
               </h6>
               <ul>
                 <li>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                  Amazing opportunity do develop people skills and meet awesome
+                  people
                 </li>
                 <li>
                   Curabitur rhoncus nisi justo, sed congue erat condimentum eget

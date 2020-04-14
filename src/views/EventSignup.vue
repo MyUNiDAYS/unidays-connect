@@ -6,8 +6,11 @@
           <div class="power_highlight_tag">Student only!</div>
           <h3>You are almost on board!</h3>
           <p class="condition">
-            This event is student only event. <br />To verify that you are a
-            student Log in with UNiDAYS
+            <strong>{{
+              this.$store.getters.eventData.find(e => e.id == query).title
+            }}</strong>
+            is student only event. <br />To verify that you are a student Log in
+            with UNiDAYS
           </p>
           <a class="redirect-link" @click.prevent="redirect">
             <img src="@/assets/btn-log in with UNiDAYS-green.png" alt="" />

@@ -1,4 +1,3 @@
-/*eslint no-unused-vars: "off"*/
 import Vue from "vue";
 import {
   AuthorizationServiceConfiguration,

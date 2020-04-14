@@ -15,7 +15,7 @@
               <div class="power_events_image">
                 <img
                   class="primary_img"
-                  src="@/assets/images/events/1.jpg"
+                  :src="'/images/' + eventData[3].image"
                   alt=""
                 />
                 <div class="power_events_date">
@@ -23,14 +23,22 @@
                 </div>
               </div>
               <div class="power_events_content">
-                <h3><a href="#">Volunteer Training</a></h3>
+                <h3>
+                  <a href="#">{{ eventData[3].title }}</a>
+                </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur rhoncus nisi justo, sed congue erat condimentum
-                  eget.
+                  {{ eventData[3].description }}
                 </p>
                 <div class="power_events_bottom">
-                  <a href="#">Free Booking</a> <span>30 seats left</span>
+                  <router-link
+                    :to="{
+                      name: 'EventSignup',
+                      query: { id: eventData[3].id }
+                    }"
+                  >
+                    Free Booking
+                  </router-link>
+                  <span>{{ seatsLeft(eventData[3]) }} seats left</span>
                 </div>
                 <h6 class="power_events_location">
                   <i class="ion-ios-pin"></i> 23/4 RK Street, United States of
@@ -46,7 +54,7 @@
               <div class="power_events_image">
                 <img
                   class="primary_img"
-                  src="@/assets/images/events/2.jpg"
+                  :src="'/images/' + eventData[1].image"
                   alt=""
                 />
                 <div class="power_events_date">
@@ -54,14 +62,22 @@
                 </div>
               </div>
               <div class="power_events_content">
-                <h3><a href="#">Social Work Conference</a></h3>
+                <h3>
+                  <a href="#">{{ eventData[1].title }}</a>
+                </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Curabitur rhoncus nisi justo, sed congue erat condimentum
-                  eget.
+                  {{ eventData[1].description }}
                 </p>
                 <div class="power_events_bottom">
-                  <a href="#">Book Now</a> <span>10 seats left</span>
+                  <router-link
+                    :to="{
+                      name: 'EventSignup',
+                      query: { id: eventData[1].id }
+                    }"
+                  >
+                    Book Now
+                  </router-link>
+                  <span>{{ seatsLeft(eventData[1]) }} seats left</span>
                 </div>
                 <h6 class="power_events_location">
                   <i class="ion-ios-pin"></i> 23/4 RK Street, United States of
@@ -75,11 +91,7 @@
           <div class="power_events_list">
             <div class="power_events_list_wrapper">
               <div class="power_events_list_image">
-                <img
-                  class="primary_img"
-                  src="@/assets/images/events/thumbnail1.jpg"
-                  alt=""
-                />
+                <img class="primary_img" src="@/assets/food.png" alt="" />
               </div>
               <div class="power_events_list_content">
                 <h6><a href="#">Healthy food campaign for children</a></h6>
@@ -91,11 +103,7 @@
           <div class="power_events_list">
             <div class="power_events_list_wrapper">
               <div class="power_events_list_image">
-                <img
-                  class="primary_img"
-                  src="@/assets/images/events/thumbnail2.jpg"
-                  alt=""
-                />
+                <img class="primary_img" src="@/assets/hands.png" alt="" />
               </div>
               <div class="power_events_list_content">
                 <h6>
@@ -109,11 +117,7 @@
           <div class="power_events_list">
             <div class="power_events_list_wrapper">
               <div class="power_events_list_image">
-                <img
-                  class="primary_img"
-                  src="@/assets/images/events/thumbnail3.jpg"
-                  alt=""
-                />
+                <img class="primary_img" src="@/assets/school.png" alt="" />
               </div>
               <div class="power_events_list_content">
                 <h6>
@@ -127,11 +131,7 @@
           <div class="power_events_list">
             <div class="power_events_list_wrapper">
               <div class="power_events_list_image">
-                <img
-                  class="primary_img"
-                  src="@/assets/images/events/thumbnail4.jpg"
-                  alt=""
-                />
+                <img class="primary_img" src="@/assets/run.png" alt="" />
               </div>
               <div class="power_events_list_content">
                 <h6>
@@ -146,3 +146,34 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    eventData: function() {
+      return this.$store.getters.eventData;
+    }
+  },
+  methods: {
+    seatsLeft: function(event) {
+      return event.totalSignup - event.currentSignup;
+    },
+    description: function(event) {
+      return event.description;
+    },
+    title: function(event) {
+      return event.title;
+    }
+  }
+};
+</script>
+<style lang="sass" scoped>
+.power_events_image
+  img
+    overflow: hidden
+    max-height: 212px
+.power_events_list_image
+  img
+    height: 93px
+    width: 145px
+    overflow: hidden
+</style>

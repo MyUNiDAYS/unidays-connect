@@ -11,6 +11,13 @@
         <strong>{{ event.title }}</strong
         >.
       </p>
+      <p>
+        Do you have appetite for more good deeds? <br />
+        See other available events.
+      </p>
+      <router-link to="/events" class="power_button effect_1">
+        <span class="button_value">Go to Events!</span>
+      </router-link>
     </div>
   </div>
 </template>
@@ -31,13 +38,19 @@ export default {
 
 .content-wrapper
   max-width: 800px
-  margin: 0 auto
+  margin: 36px auto
   border-radius: 0px
-  padding-top: 0px
-  padding-right: 0px
-  padding-bottom: 0px
-  padding-left: 40px
-  box-shadow: 0px 0px 13px rgba(22, 50, 79, 0.1)
+  padding: 60px
+  box-shadow: 0px 0px 13px rgba(253, 27, 91, 0.1)
   .content
-    padding: 30px
+    h2, p
+      padding-bottom: 36px
+    p
+      max-width: 450px
+      margin: 0 auto
+
+  background-image: url('../assets/images/object.png')
+  background-repeat: no-repeat
+  background-position: 90% 65%
+  min-height: 500px;
 </style>

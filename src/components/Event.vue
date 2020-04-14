@@ -36,11 +36,11 @@
             </div>
             <div class="power_progress_amount">
               <span
-                ><i class="ion-md-wifi"></i> <b>Places Available:</b>
+                ><i class="ion-ios-person"></i> <b>Places Available:</b>
                 {{ eventDetails.totalSignup }}</span
               >
               <span
-                ><i class="ion-logo-usd"></i> <b>Places Taken:</b>
+                ><i class="ion-ios-people"></i> <b>Places Taken:</b>
                 {{ eventDetails.currentSignup }}</span
               >
             </div>

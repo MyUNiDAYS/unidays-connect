@@ -33,20 +33,17 @@
               <div class="upcoming_event_content_left">
                 <div class="highlight_tag">Latest Event</div>
                 <h3>
-                  <a href="#"
-                    >Annual Volunteer meetup<br />
-                    in New York</a
-                  >
+                  <a href="#">{{ eventData.title }}</a>
                 </h3>
                 <h6 class="upcoming_event_location">
-                  <i class="ion-ios-pin"></i> 23/4 RK Street, United States of
-                  America
+                  <i class="ion-ios-pin"></i> Albert Hall Conference Centre, N
+                  Circus St, Nottingham NG1 5AA
                 </h6>
               </div>
               <div class="upcoming_event_content_right">
                 <div class="power_button_group">
                   <router-link
-                    :to="{ name: 'EventSignup', query: { id: 1 } }"
+                    :to="{ name: 'EventSignup', query: { id: eventData.id } }"
                     class="power_button effect_1"
                   >
                     <span class="button_value">Register Now!</span>
@@ -61,3 +58,15 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: ["eventData"]
+};
+</script>
+<style lang="sass" scoped>
+.button_value
+  white-space: nowrap
+.upcoming_event_content_right
+  p
+    text-align: center
+</style>
