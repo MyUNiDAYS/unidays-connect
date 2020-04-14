@@ -13,7 +13,10 @@
             with UNiDAYS
           </p>
           <a class="redirect-link" @click.prevent="redirect">
-            <img src="@/assets/btn-log in with UNiDAYS-green.png" alt="" />
+            <img
+              src="https://cdn.unidays.world/assets/buttons/login-green.png"
+              alt=""
+            />
           </a>
         </div>
       </div>
