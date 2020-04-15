@@ -15,6 +15,25 @@ jobs:
           arguments: |
             --acl bucket-owner-full-control
 
+  publish-demos:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
+          name: Build Site
+          command: |
+            cd src/vue
+            npm ci
+            npm run build
+      - aws-s3/sync:
+          aws-region: AWS_DEFAULT_REGION
+          from: ./src/vue/dist/
+          to: s3://$CF_DEPLOYMENT_S3_BUCKET/static-sites/bonfare-by-unidays/
+          arguments: |
+            --acl bucket-owner-full-control \
+            --cache-control "max-age=86400"
+
 workflows:
   version: 2
   pushed-to-master:
@@ -24,3 +43,17 @@ workflows:
           filters:
             branches:
               only: master
+
+      - publish-demos:
+          context: aws-cf-deployment-prod
+          filters:
+            branches:
+              only: master
+
+  pushed-to-branch:
+    jobs:
+      - publish-demos:
+          context: aws-cf-deployment-dev
+          filters:
+            branches:
+              ignore: master
