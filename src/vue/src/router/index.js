@@ -11,41 +11,41 @@ import EventSignup from "../views/EventSignup.vue";
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/events",
-    name: "Events",
-    component: Events
-  },
-  {
-    path: "/event-signup",
-    name: "EventSignup",
-    component: EventSignup,
-    props: route => ({ query: route.query.id })
-  },
-  {
-    path: "/oauth/callback",
-    name: "Callback",
-    component: Callback
-  },
-  {
-    path: "/complete-signup",
-    name: "CompleteSignup",
-    component: CompleteSignup,
-    meta: {
-      requiresAuth: true
+    {
+        path: "/",
+        name: "Home",
+        component: Home
+    },
+    {
+        path: "/events",
+        name: "Events",
+        component: Events
+    },
+    {
+        path: "/event-signup",
+        name: "EventSignup",
+        component: EventSignup,
+        props: route => ({ query: route.query.id })
+    },
+    {
+        path: "/oauth/callback",
+        name: "Callback",
+        component: Callback
+    },
+    {
+        path: "/complete-signup",
+        name: "CompleteSignup",
+        component: CompleteSignup,
+        meta: {
+            requiresAuth: true
+        }
     }
-  }
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  linkExactActiveClass: "active",
-  routes
+    mode: "history",
+    linkExactActiveClass: "active",
+    routes
 });
 
 // router.beforeEach((to, from, next) => {

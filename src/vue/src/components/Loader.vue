@@ -1,19 +1,19 @@
 <template>
-  <div class="loader-wrapper">
-    <div class="loader">
-      <h2>{{ loaderText }}</h2>
-      <div class="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+    <div class="loader-wrapper">
+        <div class="loader">
+            <h2>{{ loaderText }}</h2>
+            <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 <script>
 export default {
-  props: ["loaderText"]
+    props: ["loaderText"]
 };
 </script>
 <style lang="sass" scoped>
