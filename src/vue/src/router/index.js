@@ -7,6 +7,7 @@ import Callback from "../views/Callback.vue";
 import CompleteSignup from "../views/CompleteSignup.vue";
 import Events from "../views/Events.vue";
 import EventSignup from "../views/EventSignup.vue";
+import SignupError from "../views/SignupError.vue";
 
 Vue.use(VueRouter);
 
@@ -38,6 +39,11 @@ const routes = [
         meta: {
             requiresAuth: true
         }
+    },
+    {
+        path: "/error",
+        name: "SignupError",
+        component: SignupError
     }
 ];
 

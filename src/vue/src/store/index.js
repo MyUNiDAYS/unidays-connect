@@ -48,19 +48,22 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        login({ commit, getters }) {
-            return fetch(
-                `${process.env.VUE_APP_ENV_SERVICE_ENDPOINT}/oauth/userinfo`,
-                {
-                    method: "GET",
-                    headers: {
-                        Authorization: getters.authorization
+        async login({ commit, getters }) {
+            try {
+                const response = await fetch(
+                    `${process.env.VUE_APP_ENV_SERVICE_ENDPOINT}/oauth/userinfo`,
+                    {
+                        method: "GET",
+                        headers: {
+                            Authorization: getters.authorization
+                        }
                     }
-                }
-            )
-                .then(response => response.json())
-                .then(userInfo => commit("login", userInfo))
-                .catch(error => console.log("ui err", error));
+                );
+                const userInfo = await response.json();
+                return commit("login", userInfo);
+            } catch (error) {
+                return console.log("ui err", error);
+            }
         }
     }
 });

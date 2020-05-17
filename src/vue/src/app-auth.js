@@ -43,50 +43,43 @@ const auth_app = new Vue({
                 request
             );
         },
-        handleCodeAndAuthorization(callback) {
-            this.notifier.setAuthorizationListener(
-                (request, response, error) => {
-                    console.log(
-                        "Authorization request complete ",
-                        request,
-                        response,
-                        error
-                    );
-                    if (response) {
-                        console.log(`Authorization Code: ${response.code}`);
-
-                        if (!request && !request.internal) {
-                            console.log("Error: Could not authorize access");
-                            return;
-                        }
-                        const tokenRequest = new TokenRequest({
-                            client_id: this.config.client_id,
-                            redirect_uri: this.config.redirect_uri,
-                            grant_type: GRANT_TYPE_AUTHORIZATION_CODE,
-                            code: response.code,
-                            extras: {
-                                code_verifier: request.internal.code_verifier
-                            }
-                        });
-
-                        this.tokenHandler
-                            .performTokenRequest(
-                                this.serviceConfig,
-                                tokenRequest
-                            )
-                            .then(resp => {
-                                console.log(
-                                    `Access Token: ${resp.accessToken}`
-                                );
-                                callback(resp);
-                            })
-                            .catch(error => {
-                                console.log("Error", error);
-                            });
-                    }
-                }
+        async exchangeCodeForAccessToken() {
+            const result = await this.authorizationHandler.completeAuthorizationRequest();
+            if (!result) {
+                return Promise.reject("No pending authorization request");
+            }
+            console.log(
+                "Authorization request complete",
+                result.request,
+                result.response,
+                result.error
             );
-            return this.authorizationHandler.completeAuthorizationRequestIfPossible();
+            if (result.error) {
+                return Promise.reject(result.error.error);
+            }
+            if (!result.request && !result.request.internal) {
+                return Promise.reject("Error: Could not authorize access");
+            }
+            console.log(`Authorization Code: ${result.response.code}`);
+            const tokenRequest = new TokenRequest({
+                client_id: this.config.client_id,
+                redirect_uri: this.config.redirect_uri,
+                grant_type: GRANT_TYPE_AUTHORIZATION_CODE,
+                code: result.response.code,
+                extras: {
+                    code_verifier: result.request.internal.code_verifier
+                }
+            });
+            try {
+                const tokenResponse = await this.tokenHandler.performTokenRequest(
+                    this.serviceConfig,
+                    tokenRequest
+                );
+                console.log(`Access Token: ${tokenResponse.accessToken}`);
+                return Promise.resolve(tokenResponse);
+            } catch (error) {
+                return Promise.reject(error);
+            }
         }
     },
     created: function() {

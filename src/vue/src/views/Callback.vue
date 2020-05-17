@@ -18,25 +18,29 @@ export default {
     },
     methods: {
         ...mapActions(["login"]),
-        ...mapMutations(["setAccessTokenResponse"])
+        ...mapMutations(["setAccessTokenResponse", "setSignupEventId"])
     },
     mounted() {
-        if (this.$route.query.error) {
-            const eventId = this.signupEventId;
-            if (eventId) {
+        this.$auth
+            .exchangeCodeForAccessToken()
+            .then(this.setAccessTokenResponse, error => {
+                if (!error) {
+                    this.$router.replace({ name: "Home" });
+                    return;
+                }
+                if (error === "access_denied") {
+                    this.$router.replace({
+                        name: "EventSignup",
+                        params: { id: this.signupEventId }
+                    });
+                    return;
+                }
+                console.log(error);
                 this.$router.replace({
-                    name: "EventSignup",
-                    params: { id: eventId }
+                    name: "SignupError"
                 });
-                return;
-            }
-        }
-        if (this.$route.query.code) {
-            this.isLoading = true;
-            this.$auth.handleCodeAndAuthorization(this.setAccessTokenResponse);
-            return;
-        }
-        this.$router.replace({ name: "Home" });
+                this.setSignupEventId(null);
+            });
     }
 };
 </script>
