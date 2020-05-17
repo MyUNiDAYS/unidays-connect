@@ -22,37 +22,12 @@
                     </li>
                 </router-link>
                 <li class="menu-item"><a href="#">About</a></li>
-
-                <router-link
-                    v-if="isLoggedIn"
-                    class="menu-item menu-item-has-children"
-                    to="/account"
-                    v-slot="{ href, route, navigate, isExactActive }"
-                >
-                    <li :class="[isExactActive && 'active']">
-                        <a :href="href" @click="navigate">Account</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item">
-                                <a href="" @click.prevent="logout">Log out</a>
-                            </li>
-                        </ul>
-                    </li>
-                </router-link>
             </ul>
         </div>
     </nav>
 </template>
 <script>
-import { mapGetters } from "vuex";
-export default {
-    methods: {
-        logout() {
-            this.$store.commit("logout");
-            this.$router.push("/");
-        }
-    },
-    computed: mapGetters(["isLoggedIn"])
-};
+export default {};
 </script>
 <style lang="sass">
 #flexmenu
