@@ -8,7 +8,7 @@
                     <p class="condition">
                         <strong>{{
                             this.$store.getters.eventData.find(
-                                e => e.id == query
+                                e => e.id == this.$route.params.id
                             ).title
                         }}</strong>
                         is student only event. <br />To verify that you are a
@@ -39,11 +39,10 @@ export default {
             isRedirecting: false
         };
     },
-    props: ["query"],
     methods: {
         ...mapMutations(["setSignupEventId"]),
         redirect() {
-            this.setSignupEventId(this.query || 1);
+            this.setSignupEventId(this.$route.params.id || 1);
             this.isRedirecting = true;
             this.$auth.redirect();
         }

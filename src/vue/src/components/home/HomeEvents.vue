@@ -35,7 +35,7 @@
                                     <router-link
                                         :to="{
                                             name: 'EventSignup',
-                                            query: { id: eventData[3].id }
+                                            params: { id: eventData[3].id }
                                         }"
                                     >
                                         Free Booking
@@ -78,7 +78,7 @@
                                     <router-link
                                         :to="{
                                             name: 'EventSignup',
-                                            query: { id: eventData[1].id }
+                                            params: { id: eventData[1].id }
                                         }"
                                     >
                                         Book Now

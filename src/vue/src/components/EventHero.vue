@@ -46,7 +46,7 @@
                                     <router-link
                                         :to="{
                                             name: 'EventSignup',
-                                            query: { id: eventData.id }
+                                            params: { id: eventData.id }
                                         }"
                                         class="power_button effect_1"
                                     >

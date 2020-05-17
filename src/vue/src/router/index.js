@@ -22,10 +22,9 @@ const routes = [
         component: Events
     },
     {
-        path: "/event-signup",
+        path: "/event-signup/:id",
         name: "EventSignup",
-        component: EventSignup,
-        props: route => ({ query: route.query.id })
+        component: EventSignup
     },
     {
         path: "/oauth/callback",

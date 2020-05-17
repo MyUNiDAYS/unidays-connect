@@ -8,7 +8,7 @@ export default {
     components: {
         Loader
     },
-    computed: mapGetters(["authorization"]),
+    computed: mapGetters(["authorization", "signupEventId"]),
     watch: {
         authorization: function() {
             this.login().then(() =>
@@ -21,10 +21,22 @@ export default {
         ...mapMutations(["setAccessTokenResponse"])
     },
     mounted() {
+        if (this.$route.query.error) {
+            const eventId = this.signupEventId;
+            if (eventId) {
+                this.$router.replace({
+                    name: "EventSignup",
+                    params: { id: eventId }
+                });
+                return;
+            }
+        }
         if (this.$route.query.code) {
             this.isLoading = true;
             this.$auth.handleCodeAndAuthorization(this.setAccessTokenResponse);
+            return;
         }
+        this.$router.replace({ name: "Home" });
     }
 };
 </script>
