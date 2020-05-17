@@ -11,8 +11,9 @@ export default {
     computed: mapGetters(["authorization", "signupEventId"]),
     watch: {
         authorization: function() {
-            this.login().then(() =>
-                this.$router.push({ name: "CompleteSignup" })
+            this.login().then(
+                () => this.$router.replace({ name: "CompleteSignup" }),
+                () => this.$router.replace({ name: "SignupError" })
             );
         }
     },
