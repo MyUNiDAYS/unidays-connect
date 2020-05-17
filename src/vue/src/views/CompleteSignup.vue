@@ -1,18 +1,31 @@
 <template>
-    <div class="content-wrapper">
+    <div
+        class="content-wrapper"
+        v-bind:class="{ 'thank-you': verifiedStudent }"
+    >
         <div class="content">
-            <h2>
-                Thank you for signing up
-                <span class="first-name">{{ userInfo.given_name }}</span
-                >!
-            </h2>
+            <template v-if="verifiedStudent">
+                <h2>
+                    Thank you for signing up
+                    <span class="first-name"> {{ userInfo.given_name }} </span>!
+                </h2>
+                <p>
+                    We have sent email to {{ userInfo.email }} with more details
+                    about our <strong> {{ event.title }} </strong>.
+                </p>
+            </template>
+            <template v-if="!verifiedStudent">
+                <h2>
+                    Thank you for your interest
+                    <span class="first-name"> {{ userInfo.given_name }} </span>!
+                </h2>
+                <p>
+                    Unfortunately <strong> {{ event.title }} </strong> is only
+                    open to Students.
+                </p>
+            </template>
             <p>
-                We have sent email to {{ userInfo.email }} with more details
-                about our <strong>{{ event.title }}</strong
-                >.
-            </p>
-            <p>
-                Do you have appetite for more good deeds? <br />
+                Do you have an appetite for more good deeds?<br />
                 See other available events.
             </p>
             <router-link to="/events" class="power_button effect_1">
@@ -25,10 +38,26 @@
 import { mapGetters } from "vuex";
 export default {
     computed: {
-        ...mapGetters(["userInfo", "eventData", "signupEventId"]),
+        ...mapGetters(["isLoggedIn", "userInfo", "eventData", "signupEventId"]),
         event() {
             return this.eventData.find(e => e.id == this.signupEventId);
+        },
+        verifiedStudent() {
+            return (
+                this.userInfo.verification_status &&
+                this.userInfo.verification_status.verified &&
+                this.userInfo.verification_status.user_type === "student"
+            );
         }
+    },
+    mounted() {
+        if (!this.isLoggedIn) {
+            this.$router.replace({ name: "Home" });
+        }
+    },
+    beforeRouteLeave(to, from, next) {
+        this.$store.commit("logout");
+        next();
     }
 };
 </script>
@@ -49,8 +78,9 @@ export default {
       max-width: 450px
       margin: 0 auto
 
-  background-image: url('../assets/images/object.png')
-  background-repeat: no-repeat
-  background-position: 90% 65%
-  min-height: 500px;
+  &.thank-you
+    background-image: url('../assets/images/object.png')
+    background-repeat: no-repeat
+    background-position: 90% 65%
+    min-height: 500px;
 </style>
