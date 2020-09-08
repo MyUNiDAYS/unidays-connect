@@ -14,6 +14,7 @@ jobs:
           to: s3://$CDN_BUCKET_NAME/assets/buttons/
           arguments: |
             --acl bucket-owner-full-control
+            --metadata-directive REPLACE --expires 2034-01-01T00:00:00Z --cache-control max-age=2592000,public
 
   publish-demos:
     docker:
