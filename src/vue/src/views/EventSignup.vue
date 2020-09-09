@@ -16,8 +16,8 @@
                     </p>
                     <a class="redirect-link" @click.prevent="redirect">
                         <img
-                            src="https://cdn.unidays.world/assets/buttons/login-green.png"
-                            alt=""
+                            src="https://cdn.unidays.world/assets/buttons/login-regular.png"
+                            alt="Log in with UNiDAYS"
                         />
                     </a>
                 </div>
