@@ -19,7 +19,7 @@ export default new Vuex.Store({
                 //     user_type: "student"
                 // }
             },
-            institutionInfo:{
+            institutionInfo: {
                 //   sub: "",
                 //   country: "", Ref https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3#Officially_assigned_code_elements
                 //   isced: [], Ref https://en.wikipedia.org/wiki/International_Standard_Classification_of_Education#ISCED_1997_levels_of_education
@@ -43,8 +43,8 @@ export default new Vuex.Store({
             state.user.isLoggedIn = true;
             state.user.userInfo = { ...userInfo };
         },
-        setInstitutionInfo(state,institutionInfo) {
-            state.user.institutionInfo = {...institutionInfo};
+        setInstitutionInfo(state, institutionInfo) {
+            state.user.institutionInfo = { ...institutionInfo };
         },
         logout(state) {
             state.user.isLoggedIn = false;
@@ -77,7 +77,7 @@ export default new Vuex.Store({
                 return console.log("ui err", error);
             }
         },
-        async getInstitutionInfo({commit, getters}) {
+        async getInstitutionInfo({ commit, getters }) {
             try {
                 const response = await fetch(
                     `${process.env.VUE_APP_ENV_SERVICE_ENDPOINT}/data/institution/me`,

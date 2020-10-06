@@ -19,7 +19,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(["login","getInstitutionInfo"]),
+        ...mapActions(["login", "getInstitutionInfo"]),
         ...mapMutations(["setAccessTokenResponse", "setSignupEventId"])
     },
     mounted() {

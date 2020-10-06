@@ -26,13 +26,16 @@
             </template>
             <template v-if="!universityStudentInUk">
                 <p>
-                    We can see you are currenty studying in <strong>{{ institutionInfo.name }}</strong>.
-                    We are currently developing a support program for university students in the UK and we've emailed you all the details.
+                    We can see you are currenty studying in
+                    <strong>{{ institutionInfo.name }}</strong
+                    >. We are currently developing a support program for
+                    university students in the UK and we've emailed you all the
+                    details.
                 </p>
             </template>
             <template v-else>
                 <p>
-                    Do you have an appetite for more good deeds?<br/>
+                    Do you have an appetite for more good deeds?<br />
                     See other available events.
                 </p>
             </template>
@@ -46,7 +49,13 @@
 import { mapGetters } from "vuex";
 export default {
     computed: {
-        ...mapGetters(["isLoggedIn", "userInfo", "eventData", "signupEventId","institutionInfo"]),
+        ...mapGetters([
+            "isLoggedIn",
+            "userInfo",
+            "eventData",
+            "signupEventId",
+            "institutionInfo"
+        ]),
         event() {
             return this.eventData.find(e => e.id == this.signupEventId);
         },
@@ -57,12 +66,12 @@ export default {
                 this.userInfo.verification_status.user_type === "student"
             );
         },
-        universityStudentInUk(){
-            return(
+        universityStudentInUk() {
+            return (
                 this.institutionInfo &&
                 this.institutionInfo.isced &&
-                this.institutionInfo.isced.includes("6")
-                && this.institutionInfo.country === "GBR"
+                this.institutionInfo.isced.includes("6") &&
+                this.institutionInfo.country === "GBR"
             );
         }
     },
