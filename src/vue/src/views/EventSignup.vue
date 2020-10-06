@@ -53,12 +53,12 @@ export default {
 .signup-card
   padding: 60px 100px
   border-radius: 15px
-  box-shadow: 0px 0px 13px rgba(253, 27, 91, 0.1);
+  box-shadow: 0px 0px 13px rgba(253, 27, 91, 0.1)
   max-width: 800px
   margin: 64px auto
-  background-image: url('../assets/layer1.png');
-  background-repeat: no-repeat;
-  background-position: bottom right;
+  background-image: url('../assets/layer1.png')
+  background-repeat: no-repeat
+  background-position: bottom right
   h3
     padding: 20px 0
   .signup-card-content
