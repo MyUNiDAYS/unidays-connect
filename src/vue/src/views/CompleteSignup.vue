@@ -24,7 +24,7 @@
                     open to Students.
                 </p>
             </template>
-            <template v-if="!universityStudentInUk">
+            <template v-if="universityStudentInUk">
                 <p>
                     We can see you are currenty studying in
                     <strong>{{ institutionInfo.name }}</strong
@@ -70,7 +70,7 @@ export default {
             return (
                 this.institutionInfo &&
                 this.institutionInfo.isced &&
-                this.institutionInfo.isced.includes("6") &&
+                this.institutionInfo.isced.includes(6) &&
                 this.institutionInfo.country === "GBR"
             );
         }
