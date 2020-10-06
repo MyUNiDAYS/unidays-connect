@@ -14,6 +14,20 @@
                     about our <strong> {{ event.title }} </strong>.
                 </p>
             </template>
+            <template v-if="verifiedStudent">
+                <Loader v-if="isRetrievingInstitutionInfo" loaderText="Getting institution info"/>
+                <button class="power_button effect_1 tell-us-more" v-if="!showInstitutionInfo">
+                    <span class="button_value" @click="retrieveInstitutionInfo">Tell us more about your institution!</span>
+                </button>
+                <p v-if="showInstitutionInfo">
+                    We can see you are currenty studying in
+                    <strong>{{ institutionInfo.name }}</strong
+                    >. We are currently developing a support program for
+                    <strong>{{ getFriendlyIsced() }}</strong> students in the
+                    <strong>{{ institutionInfo.country }}</strong> region and we've
+                    emailed you all the details.
+                </p>
+            </template>
             <template v-if="!verifiedStudent">
                 <h2>
                     Thank you for your interest
@@ -35,10 +49,60 @@
     </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import {mapActions, mapGetters} from "vuex";
+import Loader from "@/components/Loader";
 export default {
+    components: {
+        Loader
+    },
+    data() {
+        return {
+            isRetrievingInstitutionInfo: false,
+            showInstitutionInfo: false
+        };
+    },
+    methods: {
+        ...mapActions(["getInstitutionInfo"]),
+        retrieveInstitutionInfo() {
+            this.showInstitutionInfo = false;
+            this.isRetrievingInstitutionInfo = true;
+            this.getInstitutionInfo();
+            this.showInstitutionInfo = true;
+            this.isRetrievingInstitutionInfo = false;
+        },
+        getFriendlyIsced() {
+            if (!this.institutionInfo.isced || this.institutionInfo.isced.length < 1) return "all";
+
+            switch (this.institutionInfo.isced[0]) {
+                case 1:
+                    return "primary education";
+                case 2:
+                    return "secondary education";
+                case 3:
+                    return "upper secondary education";
+                case 4:
+                    return "professional education";
+                case 5:
+                    return "professional education";
+                case 6:
+                    return "university";
+                case 7:
+                    return "master";
+                case 8:
+                    return "phd";
+            }
+
+            return "all";
+        }
+    },
     computed: {
-        ...mapGetters(["isLoggedIn", "userInfo", "eventData", "signupEventId"]),
+        ...mapGetters([
+            "isLoggedIn",
+            "userInfo",
+            "eventData",
+            "signupEventId",
+            "institutionInfo"
+        ]),
         event() {
             return this.eventData.find(e => e.id == this.signupEventId);
         },
@@ -64,7 +128,8 @@ export default {
 <style lang="sass" scoped>
 .first-name
   text-transform: capitalize
-
+.tell-us-more
+    margin-bottom: 50px
 .content-wrapper
   max-width: 800px
   margin: 36px auto
@@ -82,5 +147,5 @@ export default {
     background-image: url('../assets/images/object.png')
     background-repeat: no-repeat
     background-position: 90% 65%
-    min-height: 500px;
+    min-height: 500px
 </style>
