@@ -13,6 +13,14 @@
                     We have sent email to {{ userInfo.email }} with more details
                     about our <strong> {{ event.title }} </strong>.
                 </p>
+                <p>
+                    We can see you are currenty studying in
+                    <strong>{{ institutionInfo.name }}</strong
+                    >. We are currently developing a support program for
+                    <strong>{{ getFriendlyIsced }}</strong> students in the
+                    <strong>{{ institutionInfo.country }}</strong> region and we've
+                    emailed you all the details.
+                </p>
             </template>
             <template v-if="!verifiedStudent">
                 <h2>
@@ -24,21 +32,10 @@
                     open to Students.
                 </p>
             </template>
-            <template v-if="universityStudentInUk">
-                <p>
-                    We can see you are currenty studying in
-                    <strong>{{ institutionInfo.name }}</strong
-                    >. We are currently developing a support program for
-                    university students in the UK and we've emailed you all the
-                    details.
-                </p>
-            </template>
-            <template v-else>
-                <p>
-                    Do you have an appetite for more good deeds?<br />
-                    See other available events.
-                </p>
-            </template>
+            <p>
+                Do you have an appetite for more good deeds?<br />
+                See other available events.
+            </p>
             <router-link to="/events" class="power_button effect_1">
                 <span class="button_value">Go to Events!</span>
             </router-link>
@@ -66,13 +63,29 @@ export default {
                 this.userInfo.verification_status.user_type === "student"
             );
         },
-        universityStudentInUk() {
-            return (
-                this.institutionInfo &&
-                this.institutionInfo.isced &&
-                this.institutionInfo.isced.includes(6) &&
-                this.institutionInfo.country === "GBR"
-            );
+        getFriendlyIsced() {
+            if (!this.institutionInfo.isced) return "all";
+
+            switch (this.institutionInfo.isced[0]) {
+                case 1:
+                    return "primary education";
+                case 2:
+                    return "secondary education";
+                case 3:
+                    return "upper secondary education";
+                case 4:
+                    return "professional education";
+                case 5:
+                    return "professional education";
+                case 6:
+                    return "university";
+                case 7:
+                    return "master";
+                case 8:
+                    return "phd";
+            }
+
+            return "all";
         }
     },
     mounted() {

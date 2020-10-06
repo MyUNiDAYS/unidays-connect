@@ -22,7 +22,7 @@ export default new Vuex.Store({
             institutionInfo: {
                 //   sub: "",
                 //   country: "", Ref https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3#Officially_assigned_code_elements
-                //   isced: [], Ref https://en.wikipedia.org/wiki/International_Standard_Classification_of_Education#ISCED_1997_levels_of_education
+                //   isced: [], Ref https://en.wikipedia.org/wiki/International_Standard_Classification_of_Education#ISCED_2011_levels_of_education_and_comparison_with_ISCED_1997
                 //   type: [],
                 //   name: ""
             }
