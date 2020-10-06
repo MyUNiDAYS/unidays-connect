@@ -24,10 +24,18 @@
                     open to Students.
                 </p>
             </template>
-            <p>
-                Do you have an appetite for more good deeds?<br />
-                See other available events.
-            </p>
+            <template v-if="!universityStudentInUk">
+                <p>
+                    We can see you are currenty studying in <strong>{{ institutionInfo.name }}</strong>.
+                    We are currently developing a support program for university students in the UK and we've emailed you all the details.
+                </p>
+            </template>
+            <template v-else>
+                <p>
+                    Do you have an appetite for more good deeds?<br/>
+                    See other available events.
+                </p>
+            </template>
             <router-link to="/events" class="power_button effect_1">
                 <span class="button_value">Go to Events!</span>
             </router-link>
@@ -38,7 +46,7 @@
 import { mapGetters } from "vuex";
 export default {
     computed: {
-        ...mapGetters(["isLoggedIn", "userInfo", "eventData", "signupEventId"]),
+        ...mapGetters(["isLoggedIn", "userInfo", "eventData", "signupEventId","institutionInfo"]),
         event() {
             return this.eventData.find(e => e.id == this.signupEventId);
         },
@@ -47,6 +55,14 @@ export default {
                 this.userInfo.verification_status &&
                 this.userInfo.verification_status.verified &&
                 this.userInfo.verification_status.user_type === "student"
+            );
+        },
+        universityStudentInUk(){
+            return(
+                this.institutionInfo &&
+                this.institutionInfo.isced &&
+                this.institutionInfo.isced.includes("6")
+                && this.institutionInfo.country === "GBR"
             );
         }
     },
@@ -82,5 +98,5 @@ export default {
     background-image: url('../assets/images/object.png')
     background-repeat: no-repeat
     background-position: 90% 65%
-    min-height: 500px;
+    min-height: 500px
 </style>

@@ -11,6 +11,7 @@ export default {
     computed: mapGetters(["authorization", "signupEventId"]),
     watch: {
         authorization: function() {
+            this.getInstitutionInfo();
             this.login().then(
                 () => this.$router.replace({ name: "CompleteSignup" }),
                 () => this.$router.replace({ name: "SignupError" })
@@ -18,7 +19,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions(["login"]),
+        ...mapActions(["login","getInstitutionInfo"]),
         ...mapMutations(["setAccessTokenResponse", "setSignupEventId"])
     },
     mounted() {
