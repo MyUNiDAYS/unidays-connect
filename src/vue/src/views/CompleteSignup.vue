@@ -15,17 +15,29 @@
                 </p>
             </template>
             <template v-if="verifiedStudent">
-                <Loader v-if="isRetrievingInstitutionInfo" loaderText="Getting institution info"/>
-                <button class="power_button effect_1 tell-us-more" v-if="!showInstitutionInfo">
-                    <span class="button_value" @click="retrieveInstitutionInfo">Tell us more about your institution!</span>
+                <Loader
+                    v-if="isRetrievingInstitutionInfo"
+                    loaderText="Getting institution info"
+                />
+                <button
+                    class="power_button effect_1 tell-us-more"
+                    v-if="!showInstitutionInfo"
+                >
+                    <span class="button_value" @click="retrieveInstitutionInfo"
+                        >Tell us more about your institution!</span
+                    >
                 </button>
                 <p v-if="showInstitutionInfo">
                     We can see you are currenty studying in
                     <strong>{{ institutionInfo.name }}</strong
                     >. We are currently developing a support program for
                     <strong>{{ getFriendlyIsced() }}</strong> students in the
-                    <strong>{{ institutionInfo.country }}</strong> region and we've
-                    emailed you all the details.
+                    <strong>{{ institutionInfo.country }}</strong> region and
+                    we've emailed you all the details.
+                </p>
+                <p v-if="errorInstitutionInfo">
+                    Upsss! We could not load your institution info. Pleasy try
+                    again in a bit.
                 </p>
             </template>
             <template v-if="!verifiedStudent">
@@ -49,7 +61,7 @@
     </div>
 </template>
 <script>
-import {mapActions, mapGetters} from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import Loader from "@/components/Loader";
 export default {
     components: {
@@ -58,7 +70,8 @@ export default {
     data() {
         return {
             isRetrievingInstitutionInfo: false,
-            showInstitutionInfo: false
+            showInstitutionInfo: false,
+            errorInstitutionInfo: false
         };
     },
     methods: {
@@ -66,12 +79,26 @@ export default {
         retrieveInstitutionInfo() {
             this.showInstitutionInfo = false;
             this.isRetrievingInstitutionInfo = true;
-            this.getInstitutionInfo();
+            this.errorInstitutionInfo = false;
+            this.getInstitutionInfo().then(
+                () => {
+                    this.showInstitutionInfo = true;
+                    this.isRetrievingInstitutionInfo = false;
+                },
+                () => {
+                    this.isRetrievingInstitutionInfo = false;
+                    this.errorInstitutionInfo = true;
+                }
+            );
             this.showInstitutionInfo = true;
             this.isRetrievingInstitutionInfo = false;
         },
         getFriendlyIsced() {
-            if (!this.institutionInfo.isced || this.institutionInfo.isced.length < 1) return "all";
+            if (
+                !this.institutionInfo.isced ||
+                this.institutionInfo.isced.length < 1
+            )
+                return "all";
 
             switch (this.institutionInfo.isced[0]) {
                 case 1:
