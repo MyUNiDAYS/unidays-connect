@@ -28,7 +28,7 @@
                     >
                 </button>
                 <p v-if="showInstitutionInfo">
-                    We can see you are currenty studying in
+                    We can see you are currently studying in
                     <strong>{{ institutionInfo.name }}</strong
                     >. We are currently developing a support program for
                     <strong>{{ getFriendlyIsced() }}</strong> students in the
