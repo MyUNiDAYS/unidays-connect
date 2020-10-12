@@ -27,14 +27,20 @@
                         >Tell us more about your institution!</span
                     >
                 </button>
-                <p v-if="showInstitutionInfo">
-                    We can see you are currently studying in
-                    <strong>{{ institutionInfo.name }}</strong
-                    >. We are currently developing a support program for
-                    <strong>{{ getFriendlyIsced() }}</strong> students in the
-                    <strong>{{ institutionInfo.country }}</strong> region and
-                    we've emailed you all the details.
-                </p>
+                <div v-if="showInstitutionInfo">
+                    <p v-if="institutionInfo.name">
+                        We can see you are currently studying in
+                        <strong>{{ institutionInfo.name }}</strong
+                        >. We are currently developing a support program for
+                        <strong>{{ getFriendlyIsced() }}</strong> students in
+                        the
+                        <strong>{{ institutionInfo.country }}</strong> region
+                        and we've emailed you all the details.
+                    </p>
+                    <p v-else>
+                        You don't seem to be assigned to any institution.
+                    </p>
+                </div>
                 <p v-if="errorInstitutionInfo">
                     Upsss! We could not load your institution info. Pleasy try
                     again in a bit.
@@ -90,7 +96,6 @@ export default {
                     this.errorInstitutionInfo = true;
                 }
             );
-            this.showInstitutionInfo = true;
             this.isRetrievingInstitutionInfo = false;
         },
         getFriendlyIsced() {
