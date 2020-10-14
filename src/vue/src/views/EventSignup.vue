@@ -15,8 +15,8 @@
                         student Log in with UNiDAYS
                     </p>
                     <a class="redirect-link" @click.prevent="redirect">
-                        <img
-                            src="https://cdn.unidays.world/assets/buttons/login-regular.png"
+                        <img class="unidays-button"
+                            src="https://cdn.unidays.world/assets/buttons/login-regular-large.png"
                             alt="Log in with UNiDAYS"
                         />
                     </a>
@@ -67,4 +67,6 @@ export default {
     cursor: pointer
   .condition
     padding: 0 45px 30px 45px
+  .unidays-button
+    max-width: 40%
 </style>
