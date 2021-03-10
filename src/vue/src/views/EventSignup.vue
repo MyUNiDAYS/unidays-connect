@@ -15,7 +15,8 @@
                         student Log in with UNiDAYS
                     </p>
                     <a class="redirect-link" @click.prevent="redirect">
-                        <img class="unidays-button"
+                        <img
+                            class="unidays-button"
                             src="https://cdn.unidays.world/assets/buttons/login-regular-large.png"
                             alt="Log in with UNiDAYS"
                         />
