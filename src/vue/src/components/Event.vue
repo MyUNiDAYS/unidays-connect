@@ -72,7 +72,12 @@
 </template>
 <script>
 export default {
-    props: ["eventDetails"],
+    props: {
+        eventDetails: {
+            type: String,
+            required: true
+        }
+    },
     methods: {
         getImgUrl(img) {
             return "/images/" + img;

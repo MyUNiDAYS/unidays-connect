@@ -68,7 +68,12 @@
 </template>
 <script>
 export default {
-    props: ["eventData"]
+    props: {
+        eventData: {
+            type: String,
+            required: true
+        }
+    }
 };
 </script>
 <style lang="sass" scoped>

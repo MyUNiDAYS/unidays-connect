@@ -1,8 +1,5 @@
 <template>
-    <div
-        class="content-wrapper"
-        v-bind:class="{ 'thank-you': verifiedStudent }"
-    >
+    <div class="content-wrapper" :class="{ 'thank-you': verifiedStudent }">
         <div class="content">
             <template v-if="verifiedStudent">
                 <h2>
@@ -17,11 +14,11 @@
             <template v-if="verifiedStudent">
                 <Loader
                     v-if="isRetrievingInstitutionInfo"
-                    loaderText="Getting institution info"
+                    loader-text="Getting institution info"
                 />
                 <button
-                    class="power_button effect_1 tell-us-more"
                     v-if="!showInstitutionInfo"
+                    class="power_button effect_1 tell-us-more"
                 >
                     <span class="button_value" @click="retrieveInstitutionInfo"
                         >Tell us more about your institution!</span
@@ -80,6 +77,30 @@ export default {
             errorInstitutionInfo: false
         };
     },
+    computed: {
+        ...mapGetters([
+            "isLoggedIn",
+            "userInfo",
+            "eventData",
+            "signupEventId",
+            "institutionInfo"
+        ]),
+        event() {
+            return this.eventData.find(e => e.id == this.signupEventId);
+        },
+        verifiedStudent() {
+            return (
+                this.userInfo.verification_status &&
+                this.userInfo.verification_status.verified &&
+                this.userInfo.verification_status.user_type === "student"
+            );
+        }
+    },
+    mounted() {
+        if (!this.isLoggedIn) {
+            this.$router.replace({ name: "Home" });
+        }
+    },
     methods: {
         ...mapActions(["getInstitutionInfo"]),
         retrieveInstitutionInfo() {
@@ -125,30 +146,6 @@ export default {
             }
 
             return "all";
-        }
-    },
-    computed: {
-        ...mapGetters([
-            "isLoggedIn",
-            "userInfo",
-            "eventData",
-            "signupEventId",
-            "institutionInfo"
-        ]),
-        event() {
-            return this.eventData.find(e => e.id == this.signupEventId);
-        },
-        verifiedStudent() {
-            return (
-                this.userInfo.verification_status &&
-                this.userInfo.verification_status.verified &&
-                this.userInfo.verification_status.user_type === "student"
-            );
-        }
-    },
-    mounted() {
-        if (!this.isLoggedIn) {
-            this.$router.replace({ name: "Home" });
         }
     },
     beforeRouteLeave(to, from, next) {

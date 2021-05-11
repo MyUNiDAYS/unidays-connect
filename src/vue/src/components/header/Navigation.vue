@@ -4,18 +4,18 @@
             <div id="mobile-toggle" class="mobile-btn"></div>
             <ul id="menu-main-menu" class="main-menu">
                 <router-link
+                    v-slot="{ href, route, navigate, isExactActive }"
                     class="menu-item"
                     to="/"
-                    v-slot="{ href, route, navigate, isExactActive }"
                 >
                     <li :class="[isExactActive && 'active']">
                         <a :href="href" @click="navigate">Home</a>
                     </li>
                 </router-link>
                 <router-link
+                    v-slot="{ href, route, navigate, isExactActive }"
                     class="menu-item"
                     to="/events"
-                    v-slot="{ href, route, navigate, isExactActive }"
                 >
                     <li :class="[isExactActive && 'active']">
                         <a :href="href" @click="navigate">Events</a>

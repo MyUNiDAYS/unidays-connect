@@ -42,14 +42,17 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/recommended",
       "eslint:recommended",
       "@vue/prettier"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/camelcase": "warn",
+      "vue/eqeqeq": "warn"
+    }
   },
   "browserslist": [
     "> 1%",

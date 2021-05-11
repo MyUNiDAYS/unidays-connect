@@ -8,7 +8,7 @@
                     <p class="condition">
                         <strong>{{
                             this.$store.getters.eventData.find(
-                                e => e.id == this.$route.params.id
+                                e => e.id === this.$route.params.id
                             ).title
                         }}</strong>
                         is student only event. <br />To verify that you are a
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <Loader v-if="isRedirecting" loaderText="Redirecting" />
+        <Loader v-if="isRedirecting" loader-text="Redirecting" />
     </div>
 </template>
 <script>

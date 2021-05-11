@@ -13,7 +13,12 @@
 </template>
 <script>
 export default {
-    props: ["loaderText"]
+    props: {
+        loaderText: {
+            type: String,
+            required: true
+        }
+    }
 };
 </script>
 <style lang="sass" scoped>

@@ -29,6 +29,9 @@ const auth_app = new Vue({
         ),
         tokenHandler: new BaseTokenRequestHandler(new FetchRequestor())
     },
+    created: function() {
+        this.authorizationHandler.setAuthorizationNotifier(this.notifier);
+    },
     methods: {
         redirect() {
             const request = new AuthorizationRequest({
@@ -81,9 +84,6 @@ const auth_app = new Vue({
                 return Promise.reject(error);
             }
         }
-    },
-    created: function() {
-        this.authorizationHandler.setAuthorizationNotifier(this.notifier);
     }
 });
 

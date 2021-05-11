@@ -9,7 +9,7 @@
                     <h1 class="power_title ">Upcoming Event</h1>
                     <div class="power_title_line"></div>
                 </div>
-                <EventHero :eventData="heroEvent" />
+                <EventHero :event-data="heroEvent" />
             </div>
             <div class="section causes bg_color_1">
                 <div class="container">
@@ -27,7 +27,7 @@
                         <Event
                             v-for="event in otherEvents"
                             :key="event.id"
-                            :eventDetails="event"
+                            :event-details="event"
                         />
                     </div>
                 </div>

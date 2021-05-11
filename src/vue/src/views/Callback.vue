@@ -1,5 +1,5 @@
 <template>
-    <Loader loaderText="Getting your info" />
+    <Loader loader-text="Getting your info" />
 </template>
 <script>
 import Loader from "@/components/Loader";
@@ -16,10 +16,6 @@ export default {
                 () => this.$router.replace({ name: "SignupError" })
             );
         }
-    },
-    methods: {
-        ...mapActions(["login", "getInstitutionInfo"]),
-        ...mapMutations(["setAccessTokenResponse", "setSignupEventId"])
     },
     mounted() {
         this.$auth
@@ -42,6 +38,10 @@ export default {
                 });
                 this.setSignupEventId(null);
             });
+    },
+    methods: {
+        ...mapActions(["login", "getInstitutionInfo"]),
+        ...mapMutations(["setAccessTokenResponse", "setSignupEventId"])
     }
 };
 </script>
