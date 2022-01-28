@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  aws-s3: circleci/aws-s3@1.0.15
+  aws-s3: circleci/aws-s3@3.0.0
 
 jobs:
   publish-icons:
@@ -20,7 +20,7 @@ jobs:
 
   publish-demos:
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:14.18.3
     steps:
       - checkout
       - run:
