@@ -27,6 +27,7 @@ jobs:
           name: Build Site
           command: |
             cd src/vue
+            node --version && npm --version
             npm ci
             npm run build
       - aws-s3/sync:
